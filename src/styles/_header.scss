@@ -40,7 +40,10 @@
             grid-column: 1 / -1;
             grid-template-rows: 1fr;
             grid-template-columns: repeat(2, max-content);
+        }
 
+        @media only screen and (max-width: $bp-xsmall) {
+            grid-gap: 1rem;
         }
 
         span {
@@ -82,6 +85,14 @@
         }
     }
 
+    &__btn {
+        @media only screen and (max-width: $bp-xsmall) {    
+            span {
+                display: none;
+            }
+        }
+    }
+
     &__btn::after {
         content: '';
         display: inline-block;
@@ -94,6 +105,10 @@
         background-repeat: no-repeat;
         background: var(--color-white);
         transition: all .2s;
+
+        @media only screen and (max-width: $bp-medium) {
+            vertical-align: bottom;
+        }
     }
 
     &__btn:hover::after {

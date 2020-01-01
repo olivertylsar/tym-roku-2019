@@ -1,5 +1,12 @@
 .heading-1 {
     font-size: 6rem;
+    @media only screen and (max-width: $bp-small) {
+        font-size: 4rem;
+    }
+    @media only screen and (max-width: $bp-xsmall) {
+        font-size: 3rem;
+    }
+
 }
 
 .heading-2 {
@@ -24,6 +31,10 @@
     &:hover {
         transform: translateY(-3px);
         box-shadow: var(--shadow-dark);
+    }
+
+    @media only screen and (max-width: $bp-xsmall) {
+        font-size: 1.6rem;
     }
 }
 

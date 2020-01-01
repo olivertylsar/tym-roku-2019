@@ -11,10 +11,10 @@ function Header(props) {
                     className='btn Header__btn Header__btn--delete'
                     onClick={props.onClearSquad}
                 >
-                    Smazat mužstvo
+                    Smazat <span>mužstvo</span>
                 </button>
                 <button className='btn Header__btn Header__btn--send'>
-                    Odeslat mužstvo
+                    Odeslat <span>mužstvo</span>
                 </button>
             </div>
         </>
