@@ -25,6 +25,9 @@ class App extends Component {
         this.handleNomineePick = this.handleNomineePick.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.handleClearSquad = this.handleClearSquad.bind(this);
+        this.scrollToNominees = this.scrollToNominees.bind(this);
+
+        this.sectionNominees = React.createRef();
     }
 
     handleFieldCardPick(fieldCardIndex, category) {
@@ -41,6 +44,15 @@ class App extends Component {
             showNominees: true,
             availableNominees
         });
+
+        setTimeout(this.scrollToNominees, 300);
+    }
+
+    scrollToNominees() {
+        window.scrollTo({
+            top: this.sectionNominees.current.offsetTop,
+            behavior: 'smooth'
+        })
     }
 
     handleNomineePick(pickedNominee) {
@@ -53,7 +65,7 @@ class App extends Component {
             ];
             // check if there is an empty FieldCard (has to be right category) to be taken by that nominee
             fieldCardSelected = fieldsInCategory.find(index => {
-                return squad[index] === null
+                return squad[index] === null;
             });
         }
 
@@ -112,6 +124,7 @@ class App extends Component {
                     fieldCardSelected={fieldCardSelected}
                 />
                 <Nominees
+                    scrollRef={this.sectionNominees}
                     squad={squad}
                     onNomineePick={this.handleNomineePick}
                     onCancelPick={this.handleCancel}

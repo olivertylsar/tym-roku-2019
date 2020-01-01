@@ -86,7 +86,7 @@
     }
 
     &__btn {
-        
+
         @media only screen and (max-width: $bp-xsmall) {    
             span {
                 display: none;
@@ -107,8 +107,13 @@
         background: var(--color-white);
         transition: all .2s;
 
-        @media only screen and (max-width: $bp-medium) {
-            vertical-align: bottom;
+        @media only screen and (max-width: $bp-giant) {
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+
+        @media only screen and (max-width: $bp-xsmall) {
+            margin-left: 0;
         }
     }
 
