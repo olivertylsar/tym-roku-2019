@@ -30,10 +30,12 @@
         @media only screen and (max-width: $bp-medium) {
             font-size: 8rem;
         }
+
         @media only screen and (max-width: $bp-small) {
             font-size: 3rem;
             line-height: 2.6;
         }
+        
         @media only screen and (max-width: $bp-xsmall) {
             display: none;
         }
@@ -74,16 +76,6 @@
 
     &--selected &__image {
         border: 3px solid deeppink;
-        width: 10rem;
-        height: 13rem;
-        @media only screen and (max-width: $bp-small) {
-            width: 7rem;
-            height: 10rem;
-        }
-        @media only screen and (max-width: $bp-xsmall) {
-            width: 6rem;
-            height: 9rem;
-        }
     }
 
     &::after{
@@ -113,6 +105,7 @@
         @media only screen and (max-width: $bp-small) {
             height: 10rem;
         }
+
         @media only screen and (max-width: $bp-xsmall) {
             height: 9rem;
         }
@@ -137,5 +130,9 @@
         word-break: break-word;
         text-align: center;
         line-height: 1.2;
+
+        @media only screen and (max-width: $bp-xsmall) {
+            font-size: 1rem;
+        }
     }
 }
