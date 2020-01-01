@@ -1,0 +1,33 @@
+.container {
+    max-width: 140rem;
+    margin: 5rem auto;
+
+    display: grid;
+    grid-template-rows:  minmax(35rem, min-content) minmax(35rem, min-content);
+    grid-template-columns: minmax(45rem, min-content) 1fr;
+
+    align-content: center;
+    justify-content: center;
+
+    @media only screen and (max-width: $bp-xlarge) {
+        max-width: 125rem;
+        grid-template-columns: minmax(45rem, min-content) 1fr;
+    }
+
+    @media only screen and (max-width: $bp-large) {
+        margin: 0;
+
+        grid-template-rows: max-content minmax(65rem, 1fr) min-content;
+        grid-template-columns: minmax(30rem, min-content) 1fr;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        margin: 0;
+
+        grid-template-rows: max-content minmax(65rem, 1fr) max-content min-content;
+        grid-template-columns: 1fr;
+    }
+
+    justify-content: center;
+    box-shadow: 0 2rem 5rem rgba(#000, .4);
+}

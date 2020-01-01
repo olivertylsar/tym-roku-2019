@@ -1,0 +1,50 @@
+:root {
+    // FONTS
+    --font-primary: 'Cairo', sans-serif;
+
+    // COLORS
+    --color-blue: #000060;
+    --color-navy: #08082f;
+    --color-pink: #d2a9ff;
+    --color-purple: #8d3fbe;
+    --color-teal: #3fbea7;
+    --color-white: #ffffff;
+    --color-lightgrey: rgba(155, 155, 155, 0.5);
+    --color-black: #000000;
+
+    // SHADOWS
+    --shadow-dark: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+// BREAKPOINTS
+$bp-giant: 87.5em; // 1400px
+$bp-xlarge: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 56.25em; // 900px
+$bp-small: 37.5em; // 600px
+$bp-smallest: 31.5em; // 500px
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 1rem = 10px
+    font-family: var(--font-primary);
+
+    @media only screen and (max-width: $bp-giant) {
+        font-size: 50%; // 1rem = 8px
+    }
+}
+
+body {
+    background-color: var(--color-blue);
+}
