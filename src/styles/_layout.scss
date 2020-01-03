@@ -30,6 +30,10 @@
         grid-template-columns: 1fr;
     }
 
+    @media only screen and (max-width: $bp-xsmall) {
+        grid-template-rows: max-content minmax(50rem, 1fr) max-content min-content;
+    }
+
     justify-content: center;
     box-shadow: 0 2rem 5rem rgba(#000, .4);
 }

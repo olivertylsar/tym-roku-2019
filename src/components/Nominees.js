@@ -12,6 +12,7 @@ class Nominees extends Component {
             availableNominees,
             fieldCardSelected
         } = this.props;
+        
         const nomineesCards = availableNominees.map(nominee => (
             <CSSTransition key={nominee.id} timeout={500} classNames='Nominee'>
                 <NomineeCard
