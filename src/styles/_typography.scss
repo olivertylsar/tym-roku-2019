@@ -29,9 +29,11 @@
     cursor: pointer;
     border-radius: 5px;
 
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-dark);
+    @media (hover: hover) {
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-dark);
+        }
     }
 
     @media only screen and (max-width: $bp-xsmall) {

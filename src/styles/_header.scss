@@ -117,16 +117,18 @@
         }
     }
 
-    &__btn:hover::after {
-        transform: translateX(3px);
-    }
+    @media (hover: hover) {
+        &__btn:hover::after {
+            transform: translateX(3px);
+        }
 
-    &__btn--delete:hover {
-        background-color: deeppink;
-    }
+        &__btn--delete:hover {
+            background-color: deeppink;
+        }
 
-    &__btn--send:hover {
-        background-color: var(--color-teal);
+        &__btn--send:hover {
+            background-color: var(--color-teal);
+        }
     }
     
     &__btn--delete::after {
