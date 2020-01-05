@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NomineeCard(props) {
+const NomineeCard = props => {
     const {
         squad,
         onNomineePick,
@@ -8,6 +8,7 @@ function NomineeCard(props) {
         nomineeData,
         fieldCardSelected
     } = props;
+
     const possibleSquadIndexes = formation[nomineeData.category];
     const showButton =
         fieldCardSelected !== null ||
@@ -39,6 +40,6 @@ function NomineeCard(props) {
             )}
         </figcaption>
     );
-}
+};
 
 export default NomineeCard;

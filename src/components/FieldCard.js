@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FieldCard(props) {
+const FieldCard = props => {
     const {
         fieldCardIndex,
         onFieldCardPick,
@@ -9,6 +9,7 @@ function FieldCard(props) {
         fieldCardSelected,
         player
     } = props;
+    
     const isSelected = fieldCardSelected === fieldCardIndex;
     const hasPlayerData = player !== null;
 
@@ -17,7 +18,11 @@ function FieldCard(props) {
     // const iconClose = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-cross'></use></svg>;
 
     return (
-        <figcaption className={isSelected ? 'FieldCard FieldCard--selected' : 'FieldCard'}>
+        <figcaption
+            className={
+                isSelected ? 'FieldCard FieldCard--selected' : 'FieldCard'
+            }
+        >
             <div className='FieldCard__image-window'>
                 {hasPlayerData ? (
                     <img
@@ -26,19 +31,35 @@ function FieldCard(props) {
                         className='FieldCard__image FieldCard__image--player'
                     />
                 ) : (
-                    <img alt='default' src='/images/players/default.png' className='FieldCard__image FieldCard__image--default' />
+                    <img
+                        alt='default'
+                        src='/images/players/default.png'
+                        className='FieldCard__image FieldCard__image--default'
+                    />
                 )}
             </div>
-            <p className='FieldCard__name'>{hasPlayerData ? player.lastname : ''}</p>
+            <p className='FieldCard__name'>
+                {hasPlayerData ? player.lastname : ''}
+            </p>
             {!isSelected ? (
                 hasPlayerData ? (
-                    <button className='rounded-btn' onClick={() => onFieldCardPick(fieldCardIndex, category)}>
+                    <button
+                        className='rounded-btn'
+                        onClick={() =>
+                            onFieldCardPick(fieldCardIndex, category)
+                        }
+                    >
                         ⇄
                     </button>
                 ) : (
-                    <button className='rounded-btn' onClick={() => onFieldCardPick(fieldCardIndex, category)}>
+                    <button
+                        className='rounded-btn'
+                        onClick={() =>
+                            onFieldCardPick(fieldCardIndex, category)
+                        }
+                    >
                         +
-                    </button> 
+                    </button>
                 )
             ) : (
                 <button className='rounded-btn' onClick={onCancelPick}>
@@ -47,6 +68,6 @@ function FieldCard(props) {
             )}
         </figcaption>
     );
-}
+};
 
 export default FieldCard;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header(props) {
+const Header = props => {
     return (
         <>
             <h1 className='heading-1 Header__heading'>
@@ -19,6 +19,6 @@ function Header(props) {
             </div>
         </>
     );
-}
+};
 
 export default Header;

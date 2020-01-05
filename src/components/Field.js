@@ -1,7 +1,7 @@
 import React from 'react';
 import FieldLine from './FieldLine';
 
-function Field(props) {
+const Field = props => {
     const { formation, ...other } = props;
 
     const categories = ['attackers', 'midfielders', 'defenders', 'goalkeepers'];
