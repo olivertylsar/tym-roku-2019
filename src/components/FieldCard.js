@@ -12,9 +12,9 @@ function FieldCard(props) {
     const isSelected = fieldCardSelected === squadIndex;
     const hasPlayerData = player !== null;
 
-    const iconPlus = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-plus'></use></svg>;
-    const iconChange = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-cycle'></use></svg>;
-    const iconClose = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-cross'></use></svg>;
+    // const iconPlus = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-plus'></use></svg>;
+    // const iconChange = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-cycle'></use></svg>;
+    // const iconClose = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-cross'></use></svg>;
 
     return (
         <figcaption className={isSelected ? 'FieldCard FieldCard--selected' : 'FieldCard'}>

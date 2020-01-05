@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Field from './components/Field';
 import Nominees from './components/Nominees';
 import players from './data.json';
+import { filterNominees } from './helpers';
 
 class App extends Component {
     constructor(props) {
@@ -34,11 +35,8 @@ class App extends Component {
         this.setState({
             fieldCardSelected: fieldCardIndex
         });
-        const availableNominees = Object.values(players).filter(player => {
-            const isInCategory = player.category === category;
-            const isPlayerInField = this.state.squad.includes(player.id);
-            return isInCategory && !isPlayerInField;
-        });
+
+        const availableNominees = filterNominees(this.state.squad, category);
 
         this.setState({
             showNominees: true,
@@ -72,10 +70,7 @@ class App extends Component {
         const squadAfterPick = [...squad];
         squadAfterPick[fieldCardSelected] = pickedNominee.id;
 
-        const availableNominees = Object.values(players).filter(player => {
-            const isPlayerInField = squadAfterPick.includes(player.id);
-            return !isPlayerInField;
-        });
+        const availableNominees = filterNominees(squadAfterPick);
 
         this.setState({
             squad: squadAfterPick,
@@ -85,11 +80,8 @@ class App extends Component {
     }
 
     handleCancel() {
-        const availableNominees = Object.values(players).filter(player => {
-            const isPlayerInField = this.state.squad.includes(player.id);
-            return !isPlayerInField;
-        });
-
+        const availableNominees = filterNominees(this.state.squad);
+        
         this.setState({
             fieldCardSelected: null,
             availableNominees

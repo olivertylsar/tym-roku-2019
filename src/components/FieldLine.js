@@ -17,8 +17,8 @@ class FieldLine extends Component {
 
         for (let i = firstIndex; i <= lastIndex; i++) {
             const playerId = squad[i];
-            const isSlotFree = playerId === null;
-            const playerData = !isSlotFree
+            const isFieldCardVacant = playerId === null;
+            const playerData = !isFieldCardVacant
                 ? players.find(player => player.id === playerId)
                 : null;
 
