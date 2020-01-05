@@ -1,44 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FieldLine from './FieldLine';
 
-class Field extends Component {
-    render() {
-        const {
-            players,
-            formation,
-            squad,
-            onFieldCardPick,
-            onCancelPick,
-            fieldCardSelected
-        } = this.props;
+function Field(props) {
+    const { formation, ...other } = props;
 
-        const categories = [
-            'attackers',
-            'midfielders',
-            'defenders',
-            'goalkeepers'
-        ];
-        const labels = ['útočníci', 'záložníci', 'obránci', 'brankář'];
-        const fieldLines = categories.map((category, index) => (
+    const categories = ['attackers', 'midfielders', 'defenders', 'goalkeepers'];
+
+    const labels = ['útočníci', 'záložníci', 'obránci', 'brankář'];
+    const fieldLines = categories.map((category, index) => {
+        return (
             <FieldLine
                 key={index}
                 label={labels[index]}
-                data={formation[category]}
-                players={players}
-                squad={squad}
-                onFieldCardPick={onFieldCardPick}
-                onCancelPick={onCancelPick}
-                fieldCardSelected={fieldCardSelected}
+                fieldLineIndexes={formation[category]}
                 category={category}
+                {...other}
             />
-        ));
-
-        return (
-            <div className='Field'>
-                {fieldLines}
-            </div>
         );
-    }
+    });
+
+    return <div className='Field'>{fieldLines}</div>;
 }
 
 export default Field;

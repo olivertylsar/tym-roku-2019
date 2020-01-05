@@ -1,51 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FieldCard from './FieldCard';
 
-class FieldLine extends Component {
-    renderFieldCards(formationIndexes, category) {
+function FieldLine(props) {
+    const renderFieldCards = props => {
         const {
+            fieldLineIndexes,
+            category,
             players,
             squad,
             onFieldCardPick,
             onCancelPick,
             fieldCardSelected
-        } = this.props;
+        } = props;
 
-        let fieldCards = [];
-        const firstIndex = formationIndexes[0];
-        const lastIndex = formationIndexes[formationIndexes.length - 1];
-
-        for (let i = firstIndex; i <= lastIndex; i++) {
-            const playerId = squad[i];
+        const fieldCards = fieldLineIndexes.map(fieldCardIndex => {
+            const playerId = squad[fieldCardIndex];
             const isFieldCardVacant = playerId === null;
             const playerData = !isFieldCardVacant
                 ? players.find(player => player.id === playerId)
                 : null;
 
-            fieldCards.push(
+            return (
                 <FieldCard
-                    squadIndex={i}
-                    key={i}
+                    key={fieldCardIndex}
+                    fieldCardIndex={fieldCardIndex}
+                    player={playerData}
                     onFieldCardPick={onFieldCardPick}
                     onCancelPick={onCancelPick}
                     category={category}
                     fieldCardSelected={fieldCardSelected}
-                    player={playerData}
                 />
             );
-        }
+        });
+
         return fieldCards;
-    }
-    render() {
-        const { label, data, category } = this.props;
-        const fieldCards = this.renderFieldCards(data, category);
-        return (
-            <div className='FieldLine'>
-                <h2 className='FieldLine__label'>&nbsp;{label}</h2>
-                <div className='FieldLine__players'>{fieldCards}</div>
-            </div>
-        );
-    }
+    };
+
+    const { label, ...fieldCardProps } = props;
+    const fieldCards = renderFieldCards(fieldCardProps);
+
+    return (
+        <div className='FieldLine'>
+            <h2 className='FieldLine__label'>&nbsp;{label}</h2>
+            <div className='FieldLine__players'>{fieldCards}</div>
+        </div>
+    );
 }
 
 export default FieldLine;

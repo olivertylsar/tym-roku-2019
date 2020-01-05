@@ -5,30 +5,23 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 class Nominees extends Component {
     render() {
         const {
-            squad,
-            onNomineePick,
-            onCancelPick,
-            formation,
             availableNominees,
-            fieldCardSelected
+            scrollRef,
+            ...nomineeCardProps
         } = this.props;
         
         const nomineesCards = availableNominees.map(nominee => (
             <CSSTransition key={nominee.id} timeout={500} classNames='Nominee'>
                 <NomineeCard
                     key={nominee.id}
-                    squad={squad}
-                    onNomineePick={onNomineePick}
-                    onCancelPick={onCancelPick}
-                    formation={formation}
                     nomineeData={nominee}
-                    fieldCardSelected={fieldCardSelected}
+                    {...nomineeCardProps}
                 />
             </CSSTransition>
         ));
 
         return (
-            <section className='Nominees' ref={this.props.scrollRef}>
+            <section className='Nominees' ref={scrollRef}>
                 <h2 className='heading-2 Nominees__heading'>Nominovaní</h2>
                 <TransitionGroup className='Nominees__content'>
                     {nomineesCards}

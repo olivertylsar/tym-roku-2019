@@ -2,14 +2,14 @@ import React from 'react';
 
 function FieldCard(props) {
     const {
-        squadIndex,
+        fieldCardIndex,
         onFieldCardPick,
         onCancelPick,
         category,
         fieldCardSelected,
         player
     } = props;
-    const isSelected = fieldCardSelected === squadIndex;
+    const isSelected = fieldCardSelected === fieldCardIndex;
     const hasPlayerData = player !== null;
 
     // const iconPlus = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-plus'></use></svg>;
@@ -32,11 +32,11 @@ function FieldCard(props) {
             <p className='FieldCard__name'>{hasPlayerData ? player.lastname : ''}</p>
             {!isSelected ? (
                 hasPlayerData ? (
-                    <button className='rounded-btn' onClick={() => onFieldCardPick(squadIndex, category)}>
+                    <button className='rounded-btn' onClick={() => onFieldCardPick(fieldCardIndex, category)}>
                         ⇄
                     </button>
                 ) : (
-                    <button className='rounded-btn' onClick={() => onFieldCardPick(squadIndex, category)}>
+                    <button className='rounded-btn' onClick={() => onFieldCardPick(fieldCardIndex, category)}>
                         +
                     </button> 
                 )

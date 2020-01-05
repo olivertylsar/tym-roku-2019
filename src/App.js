@@ -110,7 +110,6 @@ class App extends Component {
                     players={players}
                     squad={squad}
                     onFieldCardPick={this.handleFieldCardPick}
-                    onNomineePick={this.handleNomineePick}
                     onCancelPick={this.handleCancel}
                     formation={formation}
                     fieldCardSelected={fieldCardSelected}
