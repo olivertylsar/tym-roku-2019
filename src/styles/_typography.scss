@@ -42,6 +42,9 @@
 }
 
 .rounded-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: -5px;
     right: -5px;
@@ -54,7 +57,6 @@
     font-size: 2rem;
     cursor: pointer;
     transition: all .2s;
-    display: block;
     z-index: 10;
     backface-visibility: hidden;
 
@@ -63,11 +65,12 @@
     }
 
     &__icon {
-        width: 20px;
-        height: 20px;
+        display: block;
+        position: absolute;
+        width: 2.5rem;
+        height: 2.5rem;
         backface-visibility: hidden;
         background-size: cover;
-        display: block;
 
         &--add {
             background-image: url(/images/svg/plus.svg);
