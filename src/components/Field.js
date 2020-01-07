@@ -20,6 +20,6 @@ const Field = props => {
     });
 
     return <div className='Field'>{fieldLines}</div>;
-}
+};
 
 export default Field;

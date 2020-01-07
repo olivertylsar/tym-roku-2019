@@ -9,13 +9,33 @@ const FieldCard = props => {
         fieldCardSelected,
         player
     } = props;
-    
+
     const isSelected = fieldCardSelected === fieldCardIndex;
     const hasPlayerData = player !== null;
 
-    // const iconPlus = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-plus'></use></svg>;
-    // const iconChange = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-cycle'></use></svg>;
-    // const iconClose = <svg className='rounded-btn__icon'><use xlinkHref='images/sprite.svg#icon-cross'></use></svg>;
+    const buttonAdd = (
+        <button
+            className='rounded-btn'
+            onClick={() => onFieldCardPick(fieldCardIndex, category)}
+        >
+            <span className='rounded-btn__icon rounded-btn__icon--add'></span>
+        </button>
+    );
+
+    const buttonChange = (
+        <button
+            className='rounded-btn'
+            onClick={() => onFieldCardPick(fieldCardIndex, category)}
+        >
+            <span className='rounded-btn__icon rounded-btn__icon--change'></span>
+        </button>
+    );
+
+    const buttonClose = (
+        <button className='rounded-btn' onClick={onCancelPick}>
+            <span className='rounded-btn__icon rounded-btn__icon--close'></span>
+        </button>
+    );
 
     return (
         <figcaption
@@ -41,31 +61,11 @@ const FieldCard = props => {
             <p className='FieldCard__name'>
                 {hasPlayerData ? player.lastname : ''}
             </p>
-            {!isSelected ? (
-                hasPlayerData ? (
-                    <button
-                        className='rounded-btn'
-                        onClick={() =>
-                            onFieldCardPick(fieldCardIndex, category)
-                        }
-                    >
-                        ⇄
-                    </button>
-                ) : (
-                    <button
-                        className='rounded-btn'
-                        onClick={() =>
-                            onFieldCardPick(fieldCardIndex, category)
-                        }
-                    >
-                        +
-                    </button>
-                )
-            ) : (
-                <button className='rounded-btn' onClick={onCancelPick}>
-                    ×
-                </button>
-            )}
+            {!isSelected
+                ? hasPlayerData
+                    ? buttonChange
+                    : buttonAdd
+                : buttonClose}
         </figcaption>
     );
 };

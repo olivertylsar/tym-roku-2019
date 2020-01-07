@@ -63,9 +63,23 @@
     }
 
     &__icon {
-        width: 100%;
-        height: 100%;
+        width: 20px;
+        height: 20px;
         backface-visibility: hidden;
+        background-size: cover;
+        display: block;
+
+        &--add {
+            background-image: url(/images/svg/plus.svg);
+        }
+
+        &--change {
+            background-image: url(/images/svg/cycle.svg);
+        }
+
+        &--close {
+            background-image: url(/images/svg/cross.svg);
+        }
     }
 }
 
