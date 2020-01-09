@@ -30,7 +30,7 @@
     border-radius: 5px;
 
     @media (hover: hover) {
-        &:hover {
+        &:hover:not([disabled]) {
             transform: translateY(-3px);
             box-shadow: var(--shadow-dark);
         }
@@ -38,6 +38,69 @@
 
     @media only screen and (max-width: $bp-xsmall) {
         font-size: 1.6rem;
+    }
+
+    &::after {
+        content: '';
+        display: inline-block;
+        height: 2rem;
+        width: 2rem;
+        vertical-align: middle;
+        margin-left: 1rem;
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        background-repeat: no-repeat;
+        background: var(--color-white);
+        transition: all .2s;
+
+        @media only screen and (max-width: $bp-giant) {
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+
+        @media only screen and (max-width: $bp-xsmall) {
+            margin-left: 0;
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover:not([disabled])::after {
+            transform: translateX(3px);
+        }
+
+        &--delete:hover:not([disabled]) {
+            background-color: deeppink;
+        }
+
+        &--send:hover:not([disabled]) {
+            background-color: var(--color-teal);
+        }
+    }
+    
+    &--delete::after {
+        mask: url(/images/svg/trash.svg);
+    }
+
+    &--send::after {
+        mask: url(/images/svg/paper-plane.svg);
+    }
+
+    &--done::after {
+        mask: url(/images/svg/check.svg);
+    }
+
+    &:disabled {
+        color: var(--color-lightgrey);
+        border-color: currentColor;
+        cursor: auto;
+
+        &::after {
+            background: currentColor;
+        }
+
+        &:hover {
+
+        }
     }
 }
 

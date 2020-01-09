@@ -8,12 +8,16 @@ const Header = props => {
             </h1>
             <div className='Header__actions'>
                 <button
-                    className='btn Header__btn Header__btn--delete'
+                    className='btn btn--delete Header__btn'
                     onClick={props.onClearSquad}
                 >
                     Smazat <span>mužstvo</span>
                 </button>
-                <button className='btn Header__btn Header__btn--send'>
+                <button
+                    className='btn btn--send Header__btn'
+                    onClick={props.onSubmitSquad}
+                    disabled={!props.showSubmitButton}
+                >
                     Odeslat <span>mužstvo</span>
                 </button>
             </div>

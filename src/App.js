@@ -3,6 +3,7 @@ import './App.scss';
 import Header from './components/Header';
 import Field from './components/Field';
 import Nominees from './components/Nominees';
+import Modal from './components/Modal';
 import players from './data.json';
 import { filterNominees } from './helpers';
 
@@ -20,13 +21,16 @@ class App extends Component {
             },
             fieldCardSelected: null,
             availableNominees: players,
-            showNominees: true
+            showNominees: true,
+            showModal: false
         };
         this.handleFieldCardPick = this.handleFieldCardPick.bind(this);
         this.handleNomineePick = this.handleNomineePick.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.handleClearSquad = this.handleClearSquad.bind(this);
         this.scrollToNominees = this.scrollToNominees.bind(this);
+        this.handleSubmitSquad = this.handleSubmitSquad.bind(this);
+        this.handleSubmitDone = this.handleSubmitDone.bind(this);
 
         this.sectionNominees = React.createRef();
     }
@@ -95,17 +99,38 @@ class App extends Component {
         });
     }
 
+    handleSubmitSquad() {
+        this.setState({
+            showModal: true
+        });
+    }
+
+    handleSubmitDone() {
+        this.handleClearSquad();
+        this.setState({
+            showModal: false
+        });
+    }
+
     render() {
         const {
             squad,
             formation,
             fieldCardSelected,
-            availableNominees
+            availableNominees,
+            showModal
         } = this.state;
 
+        const enableSubmitButton = (squad.every(val => val !== null));
+
         return (
+            <>
             <div className='container'>
-                <Header onClearSquad={this.handleClearSquad} />
+                <Header 
+                    onClearSquad={this.handleClearSquad}
+                    onSubmitSquad={this.handleSubmitSquad}
+                    showSubmitButton={enableSubmitButton}
+                />
                 <Field
                     players={players}
                     squad={squad}
@@ -124,6 +149,8 @@ class App extends Component {
                     fieldCardSelected={fieldCardSelected}
                 />
             </div>
+            {showModal && <Modal onSubmitDone={this.handleSubmitDone} />}
+            </>
         );
     }
 }

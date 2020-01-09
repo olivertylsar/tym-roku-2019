@@ -1,23 +1,10 @@
 .Header {
-
-
-    // display: grid;
-    // grid-template-rows: repeat(2, 1fr);
-    // justify-items: center;
-    // align-items: center;
-    // grid-gap: 5rem;
-
-    @media only screen and (max-width: $bp-large) {
-
-    }
-
     background-color: var(--color-navy);
     padding: 5rem;
 
     &__heading {
         background-color: var(--color-navy);
 
-        height: 50%;
         grid-row: 1 / 2;
         grid-column: 1 / 2;
 
@@ -91,50 +78,5 @@
                 display: none;
             }
         }
-    }
-
-    &__btn::after {
-        content: '';
-        display: inline-block;
-        height: 2rem;
-        width: 2rem;
-        vertical-align: middle;
-        margin-left: 1rem;
-        mask-size: cover;
-        mask-repeat: no-repeat;
-        background-repeat: no-repeat;
-        background: var(--color-white);
-        transition: all .2s;
-
-        @media only screen and (max-width: $bp-giant) {
-            height: 2.5rem;
-            width: 2.5rem;
-        }
-
-        @media only screen and (max-width: $bp-xsmall) {
-            margin-left: 0;
-        }
-    }
-
-    @media (hover: hover) {
-        &__btn:hover::after {
-            transform: translateX(3px);
-        }
-
-        &__btn--delete:hover {
-            background-color: deeppink;
-        }
-
-        &__btn--send:hover {
-            background-color: var(--color-teal);
-        }
-    }
-    
-    &__btn--delete::after {
-        mask: url(/images/svg/trash.svg);
-    }
-
-    &__btn--send::after {
-        mask: url(/images/svg/paper-plane.svg);
     }
 }
