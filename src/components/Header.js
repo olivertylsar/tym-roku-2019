@@ -14,7 +14,7 @@ const Header = props => {
                     Smazat <span>mužstvo</span>
                 </button>
                 <button
-                    className='btn btn--send Header__btn'
+                    className='btn btn--submit Header__btn'
                     onClick={props.onSubmitSquad}
                     disabled={!props.showSubmitButton}
                 >

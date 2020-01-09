@@ -72,7 +72,7 @@
             background-color: deeppink;
         }
 
-        &--send:hover:not([disabled]) {
+        &--submit:hover:not([disabled]) {
             background-color: var(--color-teal);
         }
     }
@@ -81,7 +81,7 @@
         mask: url(/images/svg/trash.svg);
     }
 
-    &--send::after {
+    &--submit::after {
         mask: url(/images/svg/paper-plane.svg);
     }
 
