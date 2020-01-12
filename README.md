@@ -1,6 +1,7 @@
 <h1 align="center">
   Tým roku 2019 / Team of the year 2019
 </h1>
+<p align="center"><a href="https://tymroku.olivertylsar.cz">Live demo</a></p>
 <p align="center">
   <a href="https://tymroku.olivertylsar.cz">Live demo</a>
   A concept for a Team of the year selection built with <a href="https://www.reactjs.org/" target="_blank">React</a> and deployed on <a href="https://www.netlify.com/" target="_blank">Netlify</a>
