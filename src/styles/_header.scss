@@ -1,7 +1,4 @@
 .Header {
-    background-color: var(--color-navy);
-    padding: 5rem;
-
     &__heading {
         background-color: var(--color-navy);
 
@@ -23,7 +20,6 @@
             background-color: var(--color-blue);
             padding: 3rem 0;
 
-            grid-row: 1 / 2;
             grid-column: 1 / -1;
             grid-template-rows: 1fr;
             grid-template-columns: repeat(2, max-content);
@@ -52,11 +48,6 @@
         display: grid;
         grid-gap: 3rem;
         align-content: center;
-
-        @media only screen and (max-width: $bp-large) {
-            grid-row: 2 / 3;
-            grid-column: 1 / 2;
-        }
 
         @media only screen and (max-width: $bp-medium) {    
             padding: 3rem 0;
