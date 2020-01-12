@@ -6,8 +6,13 @@ function Modal(props) {
             <div className='Modal__content'>
                 <h2 className='Modal__heading'>Odesláno.</h2>
                 <p className='Modal__paragraph'>Skvělý tým, díky!</p>
-                <button className='btn btn--done Modal__button' onClick={props.onSubmitDone}>Hotovo</button>
-                </div>
+                <button
+                    className='btn btn--done Modal__button'
+                    onClick={props.onSubmitDone}
+                >
+                    Hotovo
+                </button>
+            </div>
         </div>
     );
 }

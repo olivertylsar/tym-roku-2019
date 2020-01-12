@@ -1,6 +1,12 @@
 import React from 'react';
 
 const Header = props => {
+    const {
+        onClearSquad,
+        onSubmitSquad,
+        enableClearSquadButton,
+        enableSubmitButton
+    } = props;
     return (
         <>
             <h1 className='heading-1 Header__heading'>
@@ -9,14 +15,15 @@ const Header = props => {
             <div className='Header__actions'>
                 <button
                     className='btn btn--delete Header__btn'
-                    onClick={props.onClearSquad}
+                    onClick={onClearSquad}
+                    disabled={!enableClearSquadButton}
                 >
                     Smazat <span>mužstvo</span>
                 </button>
                 <button
                     className='btn btn--submit Header__btn'
-                    onClick={props.onSubmitSquad}
-                    disabled={!props.showSubmitButton}
+                    onClick={onSubmitSquad}
+                    disabled={!enableSubmitButton}
                 >
                     Odeslat <span>mužstvo</span>
                 </button>

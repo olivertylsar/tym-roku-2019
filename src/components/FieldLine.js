@@ -12,7 +12,8 @@ const renderFieldCards = fieldCardProps => {
 
     const fieldCards = fieldLineIndexes.map(fieldCardIndex => {
         const playerId = squad[fieldCardIndex];
-        const isFieldCardVacant = playerId === null;
+        const isFieldCardVacant = !playerId;
+
         const playerData = !isFieldCardVacant
             ? players.find(player => player.id === playerId)
             : null;

@@ -5,14 +5,14 @@ import Field from './components/Field';
 import Nominees from './components/Nominees';
 import Modal from './components/Modal';
 import players from './data.json';
-import { filterNominees } from './helpers';
+import { filterNominees, initiateSquad } from './helpers';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            squad: Array(11).fill(null),
+            squad: initiateSquad(),
             formation: {
                 attackers: [0, 1],
                 midfielders: [2, 3, 4, 5],
@@ -21,7 +21,6 @@ class App extends Component {
             },
             fieldCardSelected: null,
             availableNominees: players,
-            showNominees: true,
             showModal: false
         };
         this.handleFieldCardPick = this.handleFieldCardPick.bind(this);
@@ -36,14 +35,10 @@ class App extends Component {
     }
 
     handleFieldCardPick(fieldCardIndex, category) {
-        this.setState({
-            fieldCardSelected: fieldCardIndex
-        });
-
         const availableNominees = filterNominees(this.state.squad, category);
 
         this.setState({
-            showNominees: true,
+            fieldCardSelected: fieldCardIndex,
             availableNominees
         });
 
@@ -54,7 +49,7 @@ class App extends Component {
         window.scrollTo({
             top: this.sectionNominees.current.offsetTop,
             behavior: 'smooth'
-        })
+        });
     }
 
     handleNomineePick(pickedNominee) {
@@ -85,7 +80,7 @@ class App extends Component {
 
     handleCancel() {
         const availableNominees = filterNominees(this.state.squad);
-        
+
         this.setState({
             fieldCardSelected: null,
             availableNominees
@@ -93,9 +88,10 @@ class App extends Component {
     }
 
     handleClearSquad() {
+        const clearedSquad = initiateSquad();
         this.setState({
-            squad: Array(11).fill(null),
-            availableNominees: players
+            squad: clearedSquad,
+            availableNominees: filterNominees(clearedSquad)
         });
     }
 
@@ -121,35 +117,39 @@ class App extends Component {
             showModal
         } = this.state;
 
-        const enableSubmitButton = (squad.every(val => val !== null));
+        // check if squad is complete to enable submit button
+        const enableSubmitButton = !squad.includes(null);
+        // check if squad is not empty to enable clear squad button
+        const enableClearSquadButton = !squad.every(val => val === null);
 
         return (
             <>
-            <div className='container'>
-                <Header 
-                    onClearSquad={this.handleClearSquad}
-                    onSubmitSquad={this.handleSubmitSquad}
-                    showSubmitButton={enableSubmitButton}
-                />
-                <Field
-                    players={players}
-                    squad={squad}
-                    onFieldCardPick={this.handleFieldCardPick}
-                    onCancelPick={this.handleCancel}
-                    formation={formation}
-                    fieldCardSelected={fieldCardSelected}
-                />
-                <Nominees
-                    scrollRef={this.sectionNominees}
-                    squad={squad}
-                    onNomineePick={this.handleNomineePick}
-                    onCancelPick={this.handleCancel}
-                    formation={formation}
-                    availableNominees={availableNominees}
-                    fieldCardSelected={fieldCardSelected}
-                />
-            </div>
-            {showModal && <Modal onSubmitDone={this.handleSubmitDone} />}
+                <div className='container'>
+                    <Header
+                        onClearSquad={this.handleClearSquad}
+                        onSubmitSquad={this.handleSubmitSquad}
+                        enableClearSquadButton={enableClearSquadButton}
+                        enableSubmitButton={enableSubmitButton}
+                    />
+                    <Field
+                        players={players}
+                        squad={squad}
+                        onFieldCardPick={this.handleFieldCardPick}
+                        onCancelPick={this.handleCancel}
+                        formation={formation}
+                        fieldCardSelected={fieldCardSelected}
+                    />
+                    <Nominees
+                        scrollRef={this.sectionNominees}
+                        squad={squad}
+                        onNomineePick={this.handleNomineePick}
+                        onCancelPick={this.handleCancel}
+                        formation={formation}
+                        availableNominees={availableNominees}
+                        fieldCardSelected={fieldCardSelected}
+                    />
+                </div>
+                {showModal && <Modal onSubmitDone={this.handleSubmitDone} />}
             </>
         );
     }

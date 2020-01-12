@@ -7,3 +7,5 @@ export const filterNominees = (squad, category = null) => {
         return isInCategory && !isPlayerInField;
     });
 }
+
+export const initiateSquad = () => Array(11).fill(null);
