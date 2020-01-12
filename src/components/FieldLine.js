@@ -38,7 +38,7 @@ const FieldLine = props => {
 
     return (
         <div className='FieldLine'>
-            <h2 className='FieldLine__label'>&nbsp;{label}</h2>
+            <h2 className='FieldLine__label'>{label}</h2>
             <div className='FieldLine__players'>{fieldCards}</div>
         </div>
     );

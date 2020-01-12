@@ -10,7 +10,7 @@
     @media only screen and (max-width: $bp-medium) {
         grid-column: 1 / -1;
     }
-    
+
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     justify-content: center;
@@ -28,6 +28,7 @@
         line-height: 1;
         font-size: 11rem;
         letter-spacing: 30px;
+        padding-left: 30px;
         font-weight: 900;
         text-transform: uppercase;
         color: var(--color-lightgrey);
@@ -37,6 +38,7 @@
             line-height: 1.2;
             font-size: 9rem;
             letter-spacing: 25px;
+            padding-left: 25px;
         }
 
         @media only screen and (max-width: $bp-medium) {
