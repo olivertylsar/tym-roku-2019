@@ -19,13 +19,13 @@ This project is based on [Create React App](https://github.com/facebook/create-r
 A few things I have used to build it and why:
 - React 16.12.0
   - create-react-app allowed me to start really quickly without having to deal with all the boilerplate and ecosystem around React manually
-- Sass preprocessor using SCSS syntax
-  - great way to style an application from scratch, if you're not familiar with styled-components yet
-  - I prefer SCSS syntax over Sass syntax all day long due to its readability
 - CSS3
   - I decided not to include Bootstrap or other "CSS framework" for this project, why? 
     - to keep the visuals clean and unique to this project
     - to challenge my CSS skills and practice using CSS Grid and Flex for layout
     - I wanted to define all my CSS classes and use [BEM](http://getbem.com/introduction/) notation adjusted to React components' naming whenever possible
+- Sass preprocessor using SCSS syntax
+  - great way to style an application from scratch, if you're not familiar with CSS-in-JS libraries (i.e. styled-components) yet
+  - I prefer SCSS syntax over Sass syntax all day long due to its readability
 - Netlify
   - Deploying a basic FE application from github can't get any easier than this
