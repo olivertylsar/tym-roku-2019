@@ -57,11 +57,11 @@ class App extends Component {
 
         // do this in case a nominee is added without FieldCard being selected
         if (this.state.fieldCardSelected === null) {
-            const fieldsInCategory = this.state.formation[
+            const fieldLineIndexesInCategory = this.state.formation[
                 pickedNominee.category
             ];
             // check if there is an empty FieldCard (has to be right category) to be taken by that nominee
-            fieldCardSelected = fieldsInCategory.find(index => {
+            fieldCardSelected = fieldLineIndexesInCategory.find(index => {
                 return squad[index] === null;
             });
         }
