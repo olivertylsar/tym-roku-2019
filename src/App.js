@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.scss';
 import Header from './components/Header';
 import Field from './components/Field';
@@ -7,152 +7,114 @@ import Modal from './components/Modal';
 import players from './data.json';
 import { filterNominees, initiateSquad } from './helpers';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
+const App = () => {
+  const [squad, setSquad] = useState(initiateSquad());
+  const [fieldCardSelected, setFieldCardSelected] = useState(null);
+  const [availableNominees, setAvailableNominees] = useState(players);
+  const [showModal, setShowModal] = useState(false);
 
-        this.state = {
-            squad: initiateSquad(),
-            formation: {
-                attackers: [0, 1],
-                midfielders: [2, 3, 4, 5],
-                defenders: [6, 7, 8, 9],
-                goalkeepers: [10]
-            },
-            fieldCardSelected: null,
-            availableNominees: players,
-            showModal: false
-        };
-        this.handleFieldCardPick = this.handleFieldCardPick.bind(this);
-        this.handleNomineePick = this.handleNomineePick.bind(this);
-        this.handleCancel = this.handleCancel.bind(this);
-        this.handleClearSquad = this.handleClearSquad.bind(this);
-        this.scrollToNominees = this.scrollToNominees.bind(this);
-        this.handleSubmitSquad = this.handleSubmitSquad.bind(this);
-        this.handleSubmitDone = this.handleSubmitDone.bind(this);
+  const sectionNominees = useRef();
 
-        this.sectionNominees = React.createRef();
+  const formation = {
+    attackers: [0, 1],
+    midfielders: [2, 3, 4, 5],
+    defenders: [6, 7, 8, 9],
+    goalkeepers: [10]
+  };
+
+  const handleFieldCardPick = (fieldCardIndex, category) => {
+    const availableNominees = filterNominees(squad, category);
+
+    setFieldCardSelected(fieldCardIndex);
+    setAvailableNominees(availableNominees);
+
+    setTimeout(scrollToNominees, 300);
+  };
+
+  const scrollToNominees = () => {
+    window.scrollTo({
+      top: sectionNominees.current.offsetTop,
+      behavior: 'smooth'
+    });
+  };
+
+  const handleNomineePick = pickedNominee => {
+    let fieldCardPosition = fieldCardSelected;
+    // do this in case a nominee is added without FieldCard being selected
+    if (fieldCardPosition === null) {
+      const fieldLineIndexesInCategory = formation[pickedNominee.category];
+      // check if there is an empty FieldCard (has to be right category) to be taken by that nominee
+      fieldCardPosition = fieldLineIndexesInCategory.find(index => {
+        return squad[index] === null;
+      });
     }
 
-    handleFieldCardPick(fieldCardIndex, category) {
-        const availableNominees = filterNominees(this.state.squad, category);
+    const squadAfterPick = [...squad];
+    squadAfterPick[fieldCardPosition] = pickedNominee.id;
 
-        this.setState({
-            fieldCardSelected: fieldCardIndex,
-            availableNominees
-        });
+    const availableNominees = filterNominees(squadAfterPick);
 
-        setTimeout(this.scrollToNominees, 300);
-    }
+    setSquad(squadAfterPick);
+    setFieldCardSelected(null);
+    setAvailableNominees(availableNominees);
+  };
 
-    scrollToNominees() {
-        window.scrollTo({
-            top: this.sectionNominees.current.offsetTop,
-            behavior: 'smooth'
-        });
-    }
+  const handleCancel = () => {
+    const availableNominees = filterNominees(squad);
+    setFieldCardSelected(null);
+    setAvailableNominees(availableNominees);
+  };
 
-    handleNomineePick(pickedNominee) {
-        let { squad, fieldCardSelected } = this.state;
+  const handleClearSquad = () => {
+    const clearedSquad = initiateSquad();
+    setSquad(clearedSquad);
+    setAvailableNominees(filterNominees(clearedSquad));
+  };
 
-        // do this in case a nominee is added without FieldCard being selected
-        if (this.state.fieldCardSelected === null) {
-            const fieldLineIndexesInCategory = this.state.formation[
-                pickedNominee.category
-            ];
-            // check if there is an empty FieldCard (has to be right category) to be taken by that nominee
-            fieldCardSelected = fieldLineIndexesInCategory.find(index => {
-                return squad[index] === null;
-            });
-        }
+  const handleSubmitSquad = () => {
+    setShowModal(true);
+  };
 
-        const squadAfterPick = [...squad];
-        squadAfterPick[fieldCardSelected] = pickedNominee.id;
+  const handleSubmitDone = () => {
+    handleClearSquad();
+    setShowModal(false);
+  };
 
-        const availableNominees = filterNominees(squadAfterPick);
+  // check if squad is complete to enable submit button
+  const enableSubmitButton = !squad.includes(null);
+  // check if squad is not empty to enable clear squad button
+  const enableClearSquadButton = !squad.every(val => val === null);
 
-        this.setState({
-            squad: squadAfterPick,
-            fieldCardSelected: null,
-            availableNominees
-        });
-    }
-
-    handleCancel() {
-        const availableNominees = filterNominees(this.state.squad);
-
-        this.setState({
-            fieldCardSelected: null,
-            availableNominees
-        });
-    }
-
-    handleClearSquad() {
-        const clearedSquad = initiateSquad();
-        this.setState({
-            squad: clearedSquad,
-            availableNominees: filterNominees(clearedSquad)
-        });
-    }
-
-    handleSubmitSquad() {
-        this.setState({
-            showModal: true
-        });
-    }
-
-    handleSubmitDone() {
-        this.handleClearSquad();
-        this.setState({
-            showModal: false
-        });
-    }
-
-    render() {
-        const {
-            squad,
-            formation,
-            fieldCardSelected,
-            availableNominees,
-            showModal
-        } = this.state;
-
-        // check if squad is complete to enable submit button
-        const enableSubmitButton = !squad.includes(null);
-        // check if squad is not empty to enable clear squad button
-        const enableClearSquadButton = !squad.every(val => val === null);
-
-        return (
-            <>
-                <div className='container'>
-                    <Header
-                        onClearSquad={this.handleClearSquad}
-                        onSubmitSquad={this.handleSubmitSquad}
-                        enableClearSquadButton={enableClearSquadButton}
-                        enableSubmitButton={enableSubmitButton}
-                    />
-                    <Field
-                        players={players}
-                        squad={squad}
-                        onFieldCardPick={this.handleFieldCardPick}
-                        onCancelPick={this.handleCancel}
-                        formation={formation}
-                        fieldCardSelected={fieldCardSelected}
-                    />
-                    <Nominees
-                        scrollRef={this.sectionNominees}
-                        squad={squad}
-                        onNomineePick={this.handleNomineePick}
-                        onCancelPick={this.handleCancel}
-                        formation={formation}
-                        availableNominees={availableNominees}
-                        fieldCardSelected={fieldCardSelected}
-                    />
-                </div>
-                {showModal && <Modal onSubmitDone={this.handleSubmitDone} />}
-            </>
-        );
-    }
-}
+  return (
+    <>
+      <div className='container'>
+        <Header
+          onClearSquad={handleClearSquad}
+          onSubmitSquad={handleSubmitSquad}
+          enableClearSquadButton={enableClearSquadButton}
+          enableSubmitButton={enableSubmitButton}
+        />
+        <Field
+          players={players}
+          squad={squad}
+          onFieldCardPick={handleFieldCardPick}
+          onCancelPick={handleCancel}
+          formation={formation}
+          fieldCardSelected={fieldCardSelected}
+        />
+        <Nominees
+          scrollRef={sectionNominees}
+          squad={squad}
+          onNomineePick={handleNomineePick}
+          onCancelPick={handleCancel}
+          formation={formation}
+          availableNominees={availableNominees}
+          fieldCardSelected={fieldCardSelected}
+        />
+      </div>
+      {showModal && <Modal onSubmitDone={handleSubmitDone} />}
+    </>
+  );
+};
 
 export default App;
