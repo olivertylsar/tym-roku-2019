@@ -1,452 +1,452 @@
 [
-    {
-        "id": 1,
-        "name": "Sergio",
-        "lastname": "Aguero",
-        "category": "attackers",
-        "club": "Manchester City",
-        "number": 10,
-        "image": "aguero.jpg"
-    },
-    {
-        "id": 2,
-        "name": "Pierre-Emerick",
-        "lastname": "Aubameyang",
-        "category": "attackers",
-        "club": "Arsenal",
-        "number": 14,
-        "image": "aubameyang.jpg"
-    },
-    {
-        "id": 3,
-        "name": "Roberto",
-        "lastname": "Firmino",
-        "category": "attackers",
-        "club": "Liverpool",
-        "number": 7,
-        "image": "firmino.jpg"
-    },
-    {
-        "id": 4,
-        "name": "Serge",
-        "lastname": "Gnabry",
-        "category": "attackers",
-        "club": "Bayern Mnichov",
-        "number": 22,
-        "image": "gnabry.jpg"
-    },
-    {
-        "id": 5,
-        "name": "Eden",
-        "lastname": "Hazard",
-        "category": "attackers",
-        "club": "Real Madrid",
-        "number": 7,
-        "image": "hazard.jpg"
-    },
-    {
-        "id": 6,
-        "name": "Harry",
-        "lastname": "Kane",
-        "category": "attackers",
-        "club": "Tottenham Hotspur",
-        "number": 10,
-        "image": "kane.jpg"
-    },
-    {
-        "id": 7,
-        "name": "Robert",
-        "lastname": "Lewandowski",
-        "category": "attackers",
-        "club": "Bayern Mnichov",
-        "number": 9,
-        "image": "lewandowski.jpg"
-    },
-    {
-        "id": 8,
-        "name": "Sadio",
-        "lastname": "Mané",
-        "category": "attackers",
-        "club": "Real Madrid",
-        "number": 10,
-        "image": "mane.jpg"
-    },
-    {
-        "id": 9,
-        "name": "Kylian",
-        "lastname": "Mbappé",
-        "category": "attackers",
-        "club": "PSG",
-        "number": 7,
-        "image": "mbappe.jpg"
-    },
-    {
-        "id": 10,
-        "name": "Lionel",
-        "lastname": "Messi",
-        "category": "attackers",
-        "club": "Barcelona",
-        "number": 10,
-        "image": "messi.jpg"
-    },
-    {
-        "id": 11,
-        "name": "Cristiano",
-        "lastname": "Ronaldo",
-        "category": "attackers",
-        "club": "Juventus",
-        "number": 7,
-        "image": "ronaldo.jpg"
-    },
-    {
-        "id": 12,
-        "name": "Mohamed",
-        "lastname": "Salah",
-        "category": "attackers",
-        "club": "Liverpool",
-        "number": 11,
-        "image": "salah.jpg"
-    },
-    {
-        "id": 13,
-        "name": "Heung-min",
-        "lastname": "Son",
-        "category": "attackers",
-        "club": "Tottenham Hotspur",
-        "number": 7,
-        "image": "son.jpg"
-    },
-    {
-        "id": 14,
-        "name": "Raheem",
-        "lastname": "Sterling",
-        "category": "attackers",
-        "club": "Manchester City",
-        "number": 7,
-        "image": "sterling.jpg"
-    },
-    {
-        "id": 15,
-        "name": "Dušan",
-        "lastname": "Tadić",
-        "category": "attackers",
-        "club": "Ajax",
-        "number": 10,
-        "image": "tadic.jpg"
-    },
-    {
-        "id": 16,
-        "name": "Thiago",
-        "lastname": "Alcantara",
-        "category": "midfielders",
-        "club": "Bayern Mnichov",
-        "number": 6,
-        "image": "alcantara.jpg"
-    },
-    {
-        "id": 17,
-        "name": "Bernardo",
-        "lastname": "Silva",
-        "category": "midfielders",
-        "club": "Manchester City",
-        "number": 20,
-        "image": "bernardo-silva.jpg"
-    },
-    {
-        "id": 18,
-        "name": "Bruno",
-        "lastname": "Fernandes",
-        "category": "midfielders",
-        "club": "Sporting Lisabon",
-        "number": 8,
-        "image": "fernandes.jpg"
-    },
-    {
-        "id": 19,
-        "name": "Kevin",
-        "lastname": "De Bruyne",
-        "category": "midfielders",
-        "club": "Manchester City",
-        "number": 17,
-        "image": "de-bruyne.jpg"
-    },
-    {
-        "id": 20,
-        "name": "Frenkie",
-        "lastname": "De Jong",
-        "category": "midfielders",
-        "club": "Barcelona",
-        "number": 21,
-        "image": "de-jong.jpg"
-    },
-    {
-        "id": 21,
-        "name": "Angel",
-        "lastname": "Di María",
-        "category": "midfielders",
-        "club": "PSG",
-        "number": 11,
-        "image": "di-maria.jpg"
-    },
-    {
-        "id": 22,
-        "name": "",
-        "lastname": "Fabián Ruiz",
-        "category": "midfielders",
-        "club": "Neapol",
-        "number": 8,
-        "image": "fabian.jpg"
-    },
-    {
-        "id": 23,
-        "name": "",
-        "lastname": "Fabinho",
-        "category": "midfielders",
-        "club": "Liverpool",
-        "number": 3,
-        "image": "fabinho.jpg"
-    },
-    {
-        "id": 24,
-        "name": "Jordan",
-        "lastname": "Henderson",
-        "category": "midfielders",
-        "club": "Liverpool",
-        "number": 14,
-        "image": "henderson.jpg"
-    },
-    {
-        "id": 25,
-        "name": "",
-        "lastname": "Jorginho",
-        "category": "midfielders",
-        "club": "Chelsea",
-        "number": 5,
-        "image": "jorginho.jpg"
-    },
-    {
-        "id": 26,
-        "name": "N'Golo",
-        "lastname": "Kanté",
-        "category": "midfielders",
-        "club": "Chelsea",
-        "number": 7,
-        "image": "kante.jpg"
-    },
-    {
-        "id": 27,
-        "name": "David",
-        "lastname": "Silva",
-        "category": "midfielders",
-        "club": "Manchester City",
-        "number": 21,
-        "image": "david-silva.jpg"
-    },
-    {
-        "id": 28,
-        "name": "Donny",
-        "lastname": "Van De Beek",
-        "category": "midfielders",
-        "club": "Ajax",
-        "number": 6,
-        "image": "van-de-beek.jpg"
-    },
-    {
-        "id": 29,
-        "name": "Georginio",
-        "lastname": "Wijnaldum",
-        "category": "midfielders",
-        "club": "Liverpool",
-        "number": 5,
-        "image": "wijnaldum.jpg"
-    },
-    {
-        "id": 30,
-        "name": "Hakim",
-        "lastname": "Ziyech",
-        "category": "midfielders",
-        "club": "Ajax",
-        "number": 22,
-        "image": "ziyech.jpg"
-    },
-    {
-        "id": 31,
-        "name": "Jordi",
-        "lastname": "Alba",
-        "category": "defenders",
-        "club": "Barcelona",
-        "number": 18,
-        "image": "alba.jpg"
-    },
-    {
-        "id": 32,
-        "name": "Trent",
-        "lastname": "Alexander-Arnold",
-        "category": "defenders",
-        "club": "Liverpool",
-        "number": 66,
-        "image": "alexander-arnold.jpg"
-    },
-    {
-        "id": 33,
-        "name": "César",
-        "lastname": "Azpilicueta",
-        "category": "defenders",
-        "club": "Chelsea",
-        "number": 28,
-        "image": "azpilicueta.jpg"
-    },
-    {
-        "id": 34,
-        "name": "Daley",
-        "lastname": "Blind",
-        "category": "defenders",
-        "club": "Ajax",
-        "number": 17,
-        "image": "blind.jpg"
-    },
-    {
-        "id": 35,
-        "name": "Matthijs",
-        "lastname": "De Ligt",
-        "category": "defenders",
-        "club": "Juventus",
-        "number": 4,
-        "image": "de-ligt.jpg"
-    },
-    {
-        "id": 36,
-        "name": "José",
-        "lastname": "Giménez",
-        "category": "defenders",
-        "club": "Atlético Madrid",
-        "number": 2,
-        "image": "gimenez.jpg"
-    },
-    {
-        "id": 37,
-        "name": "Joshua",
-        "lastname": "Kimmich",
-        "category": "defenders",
-        "club": "Bayern Mnichov",
-        "number": 32,
-        "image": "kimmich.jpg"
-    },
-    {
-        "id": 38,
-        "name": "Kalidou",
-        "lastname": "Koulibaly",
-        "category": "defenders",
-        "club": "Neapol",
-        "number": 26,
-        "image": "koulibaly.jpg"
-    },
-    {
-        "id": 39,
-        "name": "Aymeric",
-        "lastname": "Laporte",
-        "category": "defenders",
-        "club": "Manchester City",
-        "number": 14,
-        "image": "laporte.jpg"
-    },
-    {
-        "id": 40,
-        "name": "Gerard",
-        "lastname": "Piqué",
-        "category": "defenders",
-        "club": "Barcelona",
-        "number": 3,
-        "image": "pique.jpg"
-    },
-    {
-        "id": 41,
-        "name": "Sergio",
-        "lastname": "Ramos",
-        "category": "defenders",
-        "club": "Real Madrid",
-        "number": 18,
-        "image": "ramos.jpg"
-    },
-    {
-        "id": 42,
-        "name": "Andy",
-        "lastname": "Robertson",
-        "category": "defenders",
-        "club": "Liverpool",
-        "number": 26,
-        "image": "robertson.jpg"
-    },
-    {
-        "id": 43,
-        "name": "Nicolás",
-        "lastname": "Tagliafico",
-        "category": "defenders",
-        "club": "Ajax",
-        "number": 3,
-        "image": "tagliafico.jpg"
-    },
-    {
-        "id": 44,
-        "name": "Virgil",
-        "lastname": "Van Dijk",
-        "category": "defenders",
-        "club": "Liverpool",
-        "number": 4,
-        "image": "van-dijk.jpg"
-    },
-    {
-        "id": 45,
-        "name": "Jan",
-        "lastname": "Vertonghen",
-        "category": "defenders",
-        "club": "Tottenham Hotspur",
-        "number": 5,
-        "image": "vertonghen.jpg"
-    },
-    {
-        "id": 46,
-        "name": "",
-        "lastname": "Alisson",
-        "category": "goalkeepers",
-        "club": "Liverpool",
-        "number": 1,
-        "image": "alisson.jpg"
-    },
-    {
-        "id": 47,
-        "name": "",
-        "lastname": "Ederson",
-        "category": "goalkeepers",
-        "club": "Manchester City",
-        "number": 23,
-        "image": "ederson.jpg"
-    },
-    {
-        "id": 48,
-        "name": "Jan",
-        "lastname": "Oblak",
-        "category": "goalkeepers",
-        "club": "Atlético Madrid",
-        "number": 13,
-        "image": "oblak.jpg"
-    },
-    {
-        "id": 49,
-        "name": "André",
-        "lastname": "Onana",
-        "category": "goalkeepers",
-        "club": "Ajax",
-        "number": 24,
-        "image": "onana.jpg"
-    },
-    {
-        "id": 50,
-        "name": "Marc-André",
-        "lastname": "Ter Stegen",
-        "category": "goalkeepers",
-        "club": "Barcelona",
-        "number": 1,
-        "image": "ter-stegen.jpg"
-    }
+  {
+    "id": 1,
+    "name": "Sergio",
+    "lastname": "Aguero",
+    "category": "attackers",
+    "club": "Manchester City",
+    "number": 10,
+    "image": "aguero.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Pierre-Emerick",
+    "lastname": "Aubameyang",
+    "category": "attackers",
+    "club": "Arsenal",
+    "number": 14,
+    "image": "aubameyang.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Roberto",
+    "lastname": "Firmino",
+    "category": "attackers",
+    "club": "Liverpool",
+    "number": 7,
+    "image": "firmino.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Serge",
+    "lastname": "Gnabry",
+    "category": "attackers",
+    "club": "Bayern Mnichov",
+    "number": 22,
+    "image": "gnabry.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Eden",
+    "lastname": "Hazard",
+    "category": "attackers",
+    "club": "Real Madrid",
+    "number": 7,
+    "image": "hazard.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Harry",
+    "lastname": "Kane",
+    "category": "attackers",
+    "club": "Tottenham Hotspur",
+    "number": 10,
+    "image": "kane.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Robert",
+    "lastname": "Lewandowski",
+    "category": "attackers",
+    "club": "Bayern Mnichov",
+    "number": 9,
+    "image": "lewandowski.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Sadio",
+    "lastname": "Mané",
+    "category": "attackers",
+    "club": "Real Madrid",
+    "number": 10,
+    "image": "mane.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Kylian",
+    "lastname": "Mbappé",
+    "category": "attackers",
+    "club": "PSG",
+    "number": 7,
+    "image": "mbappe.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Lionel",
+    "lastname": "Messi",
+    "category": "attackers",
+    "club": "Barcelona",
+    "number": 10,
+    "image": "messi.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Cristiano",
+    "lastname": "Ronaldo",
+    "category": "attackers",
+    "club": "Juventus",
+    "number": 7,
+    "image": "ronaldo.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Mohamed",
+    "lastname": "Salah",
+    "category": "attackers",
+    "club": "Liverpool",
+    "number": 11,
+    "image": "salah.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Heung-min",
+    "lastname": "Son",
+    "category": "attackers",
+    "club": "Tottenham Hotspur",
+    "number": 7,
+    "image": "son.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Raheem",
+    "lastname": "Sterling",
+    "category": "attackers",
+    "club": "Manchester City",
+    "number": 7,
+    "image": "sterling.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Dušan",
+    "lastname": "Tadić",
+    "category": "attackers",
+    "club": "Ajax",
+    "number": 10,
+    "image": "tadic.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Thiago",
+    "lastname": "Alcantara",
+    "category": "midfielders",
+    "club": "Bayern Mnichov",
+    "number": 6,
+    "image": "alcantara.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Bernardo",
+    "lastname": "Silva",
+    "category": "midfielders",
+    "club": "Manchester City",
+    "number": 20,
+    "image": "bernardo-silva.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Bruno",
+    "lastname": "Fernandes",
+    "category": "midfielders",
+    "club": "Sporting Lisabon",
+    "number": 8,
+    "image": "fernandes.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Kevin",
+    "lastname": "De Bruyne",
+    "category": "midfielders",
+    "club": "Manchester City",
+    "number": 17,
+    "image": "de-bruyne.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Frenkie",
+    "lastname": "De Jong",
+    "category": "midfielders",
+    "club": "Barcelona",
+    "number": 21,
+    "image": "de-jong.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Angel",
+    "lastname": "Di María",
+    "category": "midfielders",
+    "club": "PSG",
+    "number": 11,
+    "image": "di-maria.jpg"
+  },
+  {
+    "id": 22,
+    "name": "",
+    "lastname": "Fabián Ruiz",
+    "category": "midfielders",
+    "club": "Neapol",
+    "number": 8,
+    "image": "fabian.jpg"
+  },
+  {
+    "id": 23,
+    "name": "",
+    "lastname": "Fabinho",
+    "category": "midfielders",
+    "club": "Liverpool",
+    "number": 3,
+    "image": "fabinho.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Jordan",
+    "lastname": "Henderson",
+    "category": "midfielders",
+    "club": "Liverpool",
+    "number": 14,
+    "image": "henderson.jpg"
+  },
+  {
+    "id": 25,
+    "name": "",
+    "lastname": "Jorginho",
+    "category": "midfielders",
+    "club": "Chelsea",
+    "number": 5,
+    "image": "jorginho.jpg"
+  },
+  {
+    "id": 26,
+    "name": "N'Golo",
+    "lastname": "Kanté",
+    "category": "midfielders",
+    "club": "Chelsea",
+    "number": 7,
+    "image": "kante.jpg"
+  },
+  {
+    "id": 27,
+    "name": "David",
+    "lastname": "Silva",
+    "category": "midfielders",
+    "club": "Manchester City",
+    "number": 21,
+    "image": "david-silva.jpg"
+  },
+  {
+    "id": 28,
+    "name": "Donny",
+    "lastname": "Van De Beek",
+    "category": "midfielders",
+    "club": "Ajax",
+    "number": 6,
+    "image": "van-de-beek.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Georginio",
+    "lastname": "Wijnaldum",
+    "category": "midfielders",
+    "club": "Liverpool",
+    "number": 5,
+    "image": "wijnaldum.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Hakim",
+    "lastname": "Ziyech",
+    "category": "midfielders",
+    "club": "Ajax",
+    "number": 22,
+    "image": "ziyech.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Jordi",
+    "lastname": "Alba",
+    "category": "defenders",
+    "club": "Barcelona",
+    "number": 18,
+    "image": "alba.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Trent",
+    "lastname": "Alexander-Arnold",
+    "category": "defenders",
+    "club": "Liverpool",
+    "number": 66,
+    "image": "alexander-arnold.jpg"
+  },
+  {
+    "id": 33,
+    "name": "César",
+    "lastname": "Azpilicueta",
+    "category": "defenders",
+    "club": "Chelsea",
+    "number": 28,
+    "image": "azpilicueta.jpg"
+  },
+  {
+    "id": 34,
+    "name": "Daley",
+    "lastname": "Blind",
+    "category": "defenders",
+    "club": "Ajax",
+    "number": 17,
+    "image": "blind.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Matthijs",
+    "lastname": "De Ligt",
+    "category": "defenders",
+    "club": "Juventus",
+    "number": 4,
+    "image": "de-ligt.jpg"
+  },
+  {
+    "id": 36,
+    "name": "José",
+    "lastname": "Giménez",
+    "category": "defenders",
+    "club": "Atlético Madrid",
+    "number": 2,
+    "image": "gimenez.jpg"
+  },
+  {
+    "id": 37,
+    "name": "Joshua",
+    "lastname": "Kimmich",
+    "category": "defenders",
+    "club": "Bayern Mnichov",
+    "number": 32,
+    "image": "kimmich.jpg"
+  },
+  {
+    "id": 38,
+    "name": "Kalidou",
+    "lastname": "Koulibaly",
+    "category": "defenders",
+    "club": "Neapol",
+    "number": 26,
+    "image": "koulibaly.jpg"
+  },
+  {
+    "id": 39,
+    "name": "Aymeric",
+    "lastname": "Laporte",
+    "category": "defenders",
+    "club": "Manchester City",
+    "number": 14,
+    "image": "laporte.jpg"
+  },
+  {
+    "id": 40,
+    "name": "Gerard",
+    "lastname": "Piqué",
+    "category": "defenders",
+    "club": "Barcelona",
+    "number": 3,
+    "image": "pique.jpg"
+  },
+  {
+    "id": 41,
+    "name": "Sergio",
+    "lastname": "Ramos",
+    "category": "defenders",
+    "club": "Real Madrid",
+    "number": 18,
+    "image": "ramos.jpg"
+  },
+  {
+    "id": 42,
+    "name": "Andy",
+    "lastname": "Robertson",
+    "category": "defenders",
+    "club": "Liverpool",
+    "number": 26,
+    "image": "robertson.jpg"
+  },
+  {
+    "id": 43,
+    "name": "Nicolás",
+    "lastname": "Tagliafico",
+    "category": "defenders",
+    "club": "Ajax",
+    "number": 3,
+    "image": "tagliafico.jpg"
+  },
+  {
+    "id": 44,
+    "name": "Virgil",
+    "lastname": "Van Dijk",
+    "category": "defenders",
+    "club": "Liverpool",
+    "number": 4,
+    "image": "van-dijk.jpg"
+  },
+  {
+    "id": 45,
+    "name": "Jan",
+    "lastname": "Vertonghen",
+    "category": "defenders",
+    "club": "Tottenham Hotspur",
+    "number": 5,
+    "image": "vertonghen.jpg"
+  },
+  {
+    "id": 46,
+    "name": "",
+    "lastname": "Alisson",
+    "category": "goalkeepers",
+    "club": "Liverpool",
+    "number": 1,
+    "image": "alisson.jpg"
+  },
+  {
+    "id": 47,
+    "name": "",
+    "lastname": "Ederson",
+    "category": "goalkeepers",
+    "club": "Manchester City",
+    "number": 23,
+    "image": "ederson.jpg"
+  },
+  {
+    "id": 48,
+    "name": "Jan",
+    "lastname": "Oblak",
+    "category": "goalkeepers",
+    "club": "Atlético Madrid",
+    "number": 13,
+    "image": "oblak.jpg"
+  },
+  {
+    "id": 49,
+    "name": "André",
+    "lastname": "Onana",
+    "category": "goalkeepers",
+    "club": "Ajax",
+    "number": 24,
+    "image": "onana.jpg"
+  },
+  {
+    "id": 50,
+    "name": "Marc-André",
+    "lastname": "Ter Stegen",
+    "category": "goalkeepers",
+    "club": "Barcelona",
+    "number": 1,
+    "image": "ter-stegen.jpg"
+  }
 ]
