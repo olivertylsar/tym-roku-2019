@@ -7,6 +7,7 @@ const renderFieldCards = fieldCardProps => {
     category,
     players,
     squad,
+    resetSquadIndex,
     ...other
   } = fieldCardProps;
 
@@ -15,14 +16,23 @@ const renderFieldCards = fieldCardProps => {
     const isFieldCardVacant = !playerId;
 
     const playerData = !isFieldCardVacant
-      ? players.find(player => player.id === playerId)
+      ? players.find(player =>
+          playerId === player.id
+            ? category === player.category
+              ? true
+              : function() {
+                  resetSquadIndex(fieldCardIndex);
+                  return false;
+                }()
+            : false
+        )
       : null;
 
     return (
       <FieldCard
         key={fieldCardIndex}
         fieldCardIndex={fieldCardIndex}
-        player={playerData}
+        player={playerData ? playerData : null}
         category={category}
         {...other}
       />

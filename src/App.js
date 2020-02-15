@@ -1,41 +1,47 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.scss';
 import Header from './components/Header';
 import Field from './components/Field';
 import Nominees from './components/Nominees';
 import Modal from './components/Modal';
 import players from './players.json';
-import { filterNominees, initiateSquad } from './helpers';
+import formations from './formations.json';
+import { filterNominees, initiateSquad, getFieldCardCategory } from './helpers';
 
 const App = () => {
   const [squad, setSquad] = useState(initiateSquad());
   const [fieldCardSelected, setFieldCardSelected] = useState(null);
   const [availableNominees, setAvailableNominees] = useState(players);
   const [showModal, setShowModal] = useState(false);
+  const [selectedFormation, setSelectedFormation] = useState('4-4-2');
+
+  const formation = formations[selectedFormation];
+
+  useEffect(() => {
+    let category =
+      fieldCardSelected !== null
+        ? getFieldCardCategory(formation, Number(fieldCardSelected))
+        : null;
+    setAvailableNominees(filterNominees(squad, category));
+  }, [squad, fieldCardSelected, formation]);
 
   const sectionNominees = useRef();
-
-  const formation = {
-    attackers: [0, 1],
-    midfielders: [2, 3, 4, 5],
-    defenders: [6, 7, 8, 9],
-    goalkeepers: [10]
-  };
-
-  const handleFieldCardPick = (fieldCardIndex, category) => {
-    const availableNominees = filterNominees(squad, category);
-
-    setFieldCardSelected(fieldCardIndex);
-    setAvailableNominees(availableNominees);
-
-    setTimeout(scrollToNominees, 300);
-  };
-
   const scrollToNominees = () => {
     window.scrollTo({
       top: sectionNominees.current.offsetTop,
       behavior: 'smooth'
     });
+  };
+
+  useEffect(() => {
+    if (fieldCardSelected !== null) {
+      setTimeout(scrollToNominees, 300);
+    }
+    return clearTimeout();
+  });
+
+  const handleFieldCardPick = fieldCardIndex => {
+    setFieldCardSelected(fieldCardIndex);
   };
 
   const handleNomineePick = pickedNominee => {
@@ -52,23 +58,27 @@ const App = () => {
     const squadAfterPick = [...squad];
     squadAfterPick[fieldCardPosition] = pickedNominee.id;
 
-    const availableNominees = filterNominees(squadAfterPick);
-
     setSquad(squadAfterPick);
     setFieldCardSelected(null);
-    setAvailableNominees(availableNominees);
   };
 
   const handleCancel = () => {
-    const availableNominees = filterNominees(squad);
     setFieldCardSelected(null);
-    setAvailableNominees(availableNominees);
+  };
+
+  const handleSelectFormation = e => {
+    setSelectedFormation(e.currentTarget.value);
+  };
+
+  const resetSquadIndex = squadIndex => {
+    let newSquad = [...squad];
+    newSquad[squadIndex] = null;
+    setSquad(newSquad);
   };
 
   const handleClearSquad = () => {
     const clearedSquad = initiateSquad();
     setSquad(clearedSquad);
-    setAvailableNominees(filterNominees(clearedSquad));
   };
 
   const handleSubmitSquad = () => {
@@ -93,6 +103,8 @@ const App = () => {
           onSubmitSquad={handleSubmitSquad}
           enableClearSquadButton={enableClearSquadButton}
           enableSubmitButton={enableSubmitButton}
+          formations={formations}
+          handleSelectFormation={handleSelectFormation}
         />
         <Field
           players={players}
@@ -101,6 +113,8 @@ const App = () => {
           onCancelPick={handleCancel}
           formation={formation}
           fieldCardSelected={fieldCardSelected}
+          setSelectedFormation={setSelectedFormation}
+          resetSquadIndex={resetSquadIndex}
         />
         <Nominees
           scrollRef={sectionNominees}
