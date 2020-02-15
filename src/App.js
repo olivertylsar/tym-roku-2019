@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Field from './components/Field';
 import Nominees from './components/Nominees';
 import Modal from './components/Modal';
-import players from './data.json';
+import players from './players.json';
 import { filterNominees, initiateSquad } from './helpers';
 
 const App = () => {
