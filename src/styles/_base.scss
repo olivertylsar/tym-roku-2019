@@ -48,3 +48,14 @@ html {
 body {
     background-color: var(--color-blue);
 }
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    
+    background-repeat: no-repeat;
+    background-size: 0.5em auto;
+    background-position: right 0.25em center;
+    padding-right: 1em;
+  }
