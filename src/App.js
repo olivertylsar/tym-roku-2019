@@ -22,6 +22,7 @@ const App = () => {
     localData.selectedFormation
   );
 
+  const isFieldCardSelected = fieldCardSelected !== null;
   const formation = formations[selectedFormation];
 
   // persist squad and formation into localStorage to prevent data loss after refresh
@@ -32,12 +33,11 @@ const App = () => {
 
   // load possible nominees
   useEffect(() => {
-    let category =
-      fieldCardSelected !== null
-        ? getFieldCardCategory(formation, Number(fieldCardSelected))
-        : null;
+    let category = isFieldCardSelected
+      ? getFieldCardCategory(formation, Number(fieldCardSelected))
+      : null;
     setAvailableNominees(filterNominees(squad, category));
-  }, [squad, fieldCardSelected, formation]);
+  }, [squad, fieldCardSelected, isFieldCardSelected, formation]);
 
   const sectionNominees = useRef();
   const scrollToNominees = () => {
@@ -49,7 +49,7 @@ const App = () => {
 
   // scroll to nominees after field card is selected
   useEffect(() => {
-    if (fieldCardSelected !== null) {
+    if (isFieldCardSelected) {
       setTimeout(scrollToNominees, 300);
     }
     return clearTimeout();
@@ -106,9 +106,10 @@ const App = () => {
   };
 
   // check if squad is complete to enable submit button
-  const enableSubmitButton = !squad.includes(null);
+  const enableSubmitButton = !squad.includes(null) && !isFieldCardSelected;
   // check if squad is not empty to enable clear squad button
-  const enableClearSquadButton = !squad.every(val => val === null);
+  const enableClearSquadButton =
+    !squad.every(val => val === null) && !isFieldCardSelected;
 
   return (
     <>

@@ -1,4 +1,5 @@
 import React from 'react';
+import CardButton from './CardButton';
 
 const NomineeCard = props => {
   const {
@@ -29,14 +30,7 @@ const NomineeCard = props => {
       <p className='NomineeCard__club'>{nomineeData.club}</p>
       <p className='NomineeCard__number'>{nomineeData.number}</p>
       {showButton && (
-        <button
-          className='rounded-btn'
-          onClick={() => onNomineePick(nomineeData)}
-        >
-          <svg className='rounded-btn__icon'>
-            <use xlinkHref='images/sprite.svg#icon-plus'></use>
-          </svg>
-        </button>
+        <CardButton onClick={() => onNomineePick(nomineeData)} icon='add' />
       )}
     </figcaption>
   );

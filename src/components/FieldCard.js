@@ -1,4 +1,5 @@
 import React from 'react';
+import CardButton from './CardButton';
 
 const FieldCard = props => {
   const {
@@ -13,29 +14,11 @@ const FieldCard = props => {
   const isSelected = fieldCardSelected === fieldCardIndex;
   const hasPlayerData = player !== null;
 
-  const buttonAdd = (
-    <button
-      className='rounded-btn'
-      onClick={() => onFieldCardPick(fieldCardIndex, category)}
-    >
-      <span className='rounded-btn__icon rounded-btn__icon--add'></span>
-    </button>
-  );
+  const handleFieldCardPick = () => onFieldCardPick(fieldCardIndex, category);
 
-  const buttonChange = (
-    <button
-      className='rounded-btn'
-      onClick={() => onFieldCardPick(fieldCardIndex, category)}
-    >
-      <span className='rounded-btn__icon rounded-btn__icon--change'></span>
-    </button>
-  );
-
-  const buttonClose = (
-    <button className='rounded-btn' onClick={onCancelPick}>
-      <span className='rounded-btn__icon rounded-btn__icon--close'></span>
-    </button>
-  );
+  const buttonAdd = <CardButton onClick={handleFieldCardPick} icon='add' />;
+  const buttonSwap = <CardButton onClick={handleFieldCardPick} icon='swap' />;
+  const buttonClose = <CardButton onClick={onCancelPick} icon='close' />;
 
   return (
     <figcaption
@@ -57,7 +40,7 @@ const FieldCard = props => {
         )}
       </div>
       <p className='FieldCard__name'>{hasPlayerData ? player.lastname : ''}</p>
-      {!isSelected ? (hasPlayerData ? buttonChange : buttonAdd) : buttonClose}
+      {!isSelected ? (hasPlayerData ? buttonSwap : buttonAdd) : buttonClose}
     </figcaption>
   );
 };
