@@ -113,7 +113,6 @@ const App = () => {
           onCancelPick={handleCancel}
           formation={formation}
           fieldCardSelected={fieldCardSelected}
-          setSelectedFormation={setSelectedFormation}
           resetSquadIndex={resetSquadIndex}
         />
         <Nominees

@@ -91,9 +91,16 @@
   cursor: pointer;
   border-radius: 5px;
 
+  background-position: right 2rem center;
+  padding-right: 4rem;  
+  background-image: url("data:image/svg+xml;charset=utf-8, \
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'> \
+      <polygon points='0,0 60,0 30,40' style='fill:white;'/> \
+    </svg>");
+  
   @media (hover: hover) {
     &:hover {
-      background-color: var(--color-teal);
+      color: var(--color-teal);
     }
   }
 
