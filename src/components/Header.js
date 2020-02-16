@@ -7,7 +7,8 @@ const Header = props => {
     enableClearSquadButton,
     enableSubmitButton,
     formations,
-    handleSelectFormation
+    handleSelectFormation,
+    selectedFormation
   } = props;
   const formationOptions = Object.keys(formations).map(formation => (
     <option key={formation}>{formation}</option>
@@ -19,7 +20,9 @@ const Header = props => {
         Vyber si svůj <span>tým roku!</span>
       </h1>
       <div className='Header__actions'>
-        <select className='Header__select' onChange={handleSelectFormation}>{formationOptions}</select>
+        <select className='Header__select' onChange={handleSelectFormation} value={selectedFormation}>
+          {formationOptions}
+        </select>
         <button
           className='btn btn--delete Header__btn'
           onClick={onClearSquad}

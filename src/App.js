@@ -9,14 +9,28 @@ import formations from './formations.json';
 import { filterNominees, initiateSquad, getFieldCardCategory } from './helpers';
 
 const App = () => {
-  const [squad, setSquad] = useState(initiateSquad());
+  const localData = {
+    squad: JSON.parse(localStorage.getItem('squad')) || initiateSquad(),
+    selectedFormation: localStorage.getItem('formation') || '4-4-2'
+  };
+
+  const [squad, setSquad] = useState(localData.squad);
   const [fieldCardSelected, setFieldCardSelected] = useState(null);
   const [availableNominees, setAvailableNominees] = useState(players);
   const [showModal, setShowModal] = useState(false);
-  const [selectedFormation, setSelectedFormation] = useState('4-4-2');
+  const [selectedFormation, setSelectedFormation] = useState(
+    localData.selectedFormation
+  );
 
   const formation = formations[selectedFormation];
 
+  // persist squad and formation into localStorage to prevent data loss after refresh
+  useEffect(() => {
+    localStorage.setItem('squad', JSON.stringify(squad));
+    localStorage.setItem('formation', selectedFormation);
+  }, [squad, selectedFormation]);
+
+  // load possible nominees
   useEffect(() => {
     let category =
       fieldCardSelected !== null
@@ -33,6 +47,7 @@ const App = () => {
     });
   };
 
+  // scroll to nominees after field card is selected
   useEffect(() => {
     if (fieldCardSelected !== null) {
       setTimeout(scrollToNominees, 300);
@@ -105,6 +120,7 @@ const App = () => {
           enableSubmitButton={enableSubmitButton}
           formations={formations}
           handleSelectFormation={handleSelectFormation}
+          selectedFormation={selectedFormation}
         />
         <Field
           players={players}
