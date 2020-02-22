@@ -83,8 +83,10 @@ const App = () => {
   };
 
   const handleClearSquad = () => {
-    const clearedSquad = initiateSquad();
-    setSquad(clearedSquad);
+    if (window.confirm('Opravdu si přejete mužstvo smazat?')) {
+      const clearedSquad = initiateSquad();
+      setSquad(clearedSquad);
+    }
   };
 
   const handleSubmitSquad = () => {
@@ -101,7 +103,6 @@ const App = () => {
   // check if squad is not empty to enable clear squad button
   const enableClearSquadButton =
     !squad.every(val => val === null) && !isFieldCardSelected;
-  
 
   return (
     <>
