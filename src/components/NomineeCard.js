@@ -5,12 +5,12 @@ const NomineeCard = props => {
   const {
     squad,
     onNomineePick,
-    formation,
+    formationDetail,
     nomineeData,
     fieldCardSelected
   } = props;
 
-  const possibleSquadIndexes = formation[nomineeData.category];
+  const possibleSquadIndexes = formationDetail[nomineeData.category];
   const showButton =
     fieldCardSelected !== null ||
     possibleSquadIndexes
