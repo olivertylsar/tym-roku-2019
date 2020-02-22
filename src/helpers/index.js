@@ -1,4 +1,5 @@
 import players from '../players.json';
+import formations from '../formations.json';
 
 export const filterNominees = (squad, category = null) => {
   return Object.values(players).filter(player => {
@@ -17,3 +18,6 @@ export const getFieldCardCategory = (formation, fieldCardSelected) => {
   );
   return category;
 };
+
+export const getFormationDetail = formation => formations[formation];
+export const getFormationLabels = () => Object.keys(formations);

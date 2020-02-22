@@ -1,11 +1,11 @@
 import React from 'react';
 import FieldCard from './FieldCard';
+import players from '../players.json';
 
 const renderFieldCards = fieldCardProps => {
   const {
     fieldLineIndexes,
     category,
-    players,
     squad,
     resetSquadIndex,
     ...other

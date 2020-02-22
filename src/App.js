@@ -4,40 +4,30 @@ import Header from './components/Header';
 import Field from './components/Field';
 import Nominees from './components/Nominees';
 import Modal from './components/Modal';
-import players from './players.json';
-import formations from './formations.json';
-import { filterNominees, initiateSquad, getFieldCardCategory } from './helpers';
+import { initiateSquad, getFormationDetail } from './helpers';
+import Layout from './components/Layout';
 
 const App = () => {
   const localData = {
     squad: JSON.parse(localStorage.getItem('squad')) || initiateSquad(),
-    selectedFormation: localStorage.getItem('formation') || '4-4-2'
+    selectedFormation: localStorage.getItem('selectedFormation') || '4-4-2'
   };
 
   const [squad, setSquad] = useState(localData.squad);
   const [fieldCardSelected, setFieldCardSelected] = useState(null);
-  const [availableNominees, setAvailableNominees] = useState(players);
   const [showModal, setShowModal] = useState(false);
   const [selectedFormation, setSelectedFormation] = useState(
     localData.selectedFormation
   );
 
   const isFieldCardSelected = fieldCardSelected !== null;
-  const formation = formations[selectedFormation];
+  const formationDetail = getFormationDetail(selectedFormation);
 
   // persist squad and formation into localStorage to prevent data loss after refresh
   useEffect(() => {
     localStorage.setItem('squad', JSON.stringify(squad));
-    localStorage.setItem('formation', selectedFormation);
+    localStorage.setItem('selectedFormation', selectedFormation);
   }, [squad, selectedFormation]);
-
-  // load possible nominees
-  useEffect(() => {
-    let category = isFieldCardSelected
-      ? getFieldCardCategory(formation, Number(fieldCardSelected))
-      : null;
-    setAvailableNominees(filterNominees(squad, category));
-  }, [squad, fieldCardSelected, isFieldCardSelected, formation]);
 
   const sectionNominees = useRef();
   const scrollToNominees = () => {
@@ -63,7 +53,8 @@ const App = () => {
     let fieldCardPosition = fieldCardSelected;
     // do this in case a nominee is added without FieldCard being selected
     if (fieldCardPosition === null) {
-      const fieldLineIndexesInCategory = formation[pickedNominee.category];
+      const fieldLineIndexesInCategory =
+        formationDetail[pickedNominee.category];
       // check if there is an empty FieldCard (has to be right category) to be taken by that nominee
       fieldCardPosition = fieldLineIndexesInCategory.find(index => {
         return squad[index] === null;
@@ -110,25 +101,24 @@ const App = () => {
   // check if squad is not empty to enable clear squad button
   const enableClearSquadButton =
     !squad.every(val => val === null) && !isFieldCardSelected;
+  
 
   return (
     <>
-      <div className='container'>
+      <Layout>
         <Header
           onClearSquad={handleClearSquad}
           onSubmitSquad={handleSubmitSquad}
           enableClearSquadButton={enableClearSquadButton}
           enableSubmitButton={enableSubmitButton}
-          formations={formations}
           handleSelectFormation={handleSelectFormation}
           selectedFormation={selectedFormation}
         />
         <Field
-          players={players}
           squad={squad}
           onFieldCardPick={handleFieldCardPick}
           onCancelPick={handleCancel}
-          formation={formation}
+          formationDetail={formationDetail}
           fieldCardSelected={fieldCardSelected}
           resetSquadIndex={resetSquadIndex}
         />
@@ -137,11 +127,10 @@ const App = () => {
           squad={squad}
           onNomineePick={handleNomineePick}
           onCancelPick={handleCancel}
-          formation={formation}
-          availableNominees={availableNominees}
+          formationDetail={formationDetail}
           fieldCardSelected={fieldCardSelected}
         />
-      </div>
+      </Layout>
       {showModal && <Modal onSubmitDone={handleSubmitDone} />}
     </>
   );

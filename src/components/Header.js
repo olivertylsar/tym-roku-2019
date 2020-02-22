@@ -1,4 +1,5 @@
 import React from 'react';
+import { getFormationLabels } from '../helpers';
 
 const Header = props => {
   const {
@@ -6,11 +7,11 @@ const Header = props => {
     onSubmitSquad,
     enableClearSquadButton,
     enableSubmitButton,
-    formations,
     handleSelectFormation,
     selectedFormation
   } = props;
-  const formationOptions = Object.keys(formations).map(formation => (
+
+  const formationOptions = getFormationLabels().map(formation => (
     <option key={formation}>{formation}</option>
   ));
 

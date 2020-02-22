@@ -2,17 +2,17 @@ import React from 'react';
 import FieldLine from './FieldLine';
 
 const Field = props => {
-  const { formation, ...other } = props;
+  const { formationDetail, ...other } = props;
 
   const categories = ['attackers', 'midfielders', 'defenders', 'goalkeepers'];
-
   const labels = ['útočníci', 'záložníci', 'obránci', 'brankář'];
+
   const fieldLines = categories.map((category, index) => {
     return (
       <FieldLine
         key={index}
         label={labels[index]}
-        fieldLineIndexes={formation[category]}
+        fieldLineIndexes={formationDetail[category]}
         category={category}
         {...other}
       />
