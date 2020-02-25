@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CardButton from './CardButton';
+import SquadContext from '../context/SquadContext';
 
 const FieldCard = props => {
   const {
@@ -7,12 +8,12 @@ const FieldCard = props => {
     onFieldCardPick,
     onCancelPick,
     category,
-    fieldCardSelected,
-    player
+    playerData
   } = props;
 
-  const isSelected = fieldCardSelected === fieldCardIndex;
-  const hasPlayerData = player !== null;
+  const { selectedFieldCard } = useContext(SquadContext);
+  const isSelected = selectedFieldCard === fieldCardIndex;
+  const hasPlayerData = playerData !== null;
 
   const handleFieldCardPick = () => onFieldCardPick(fieldCardIndex, category);
 
@@ -27,8 +28,8 @@ const FieldCard = props => {
       <div className='FieldCard__image-window'>
         {hasPlayerData ? (
           <img
-            alt={player.lastname}
-            src={`/images/players/${player.image}`}
+            alt={playerData.lastname}
+            src={`/images/players/${playerData.image}`}
             className='FieldCard__image FieldCard__image--player'
           />
         ) : (
@@ -39,7 +40,7 @@ const FieldCard = props => {
           />
         )}
       </div>
-      <p className='FieldCard__name'>{hasPlayerData ? player.lastname : ''}</p>
+      <p className='FieldCard__name'>{hasPlayerData ? playerData.lastname : ''}</p>
       {!isSelected ? (hasPlayerData ? buttonSwap : buttonAdd) : buttonClose}
     </figcaption>
   );

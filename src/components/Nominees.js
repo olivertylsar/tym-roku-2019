@@ -1,38 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import NomineeCard from './NomineeCard';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import players from '../players.json';
 import { getFieldCardCategory, filterNominees } from '../helpers';
+import SquadContext from '../context/SquadContext';
 
-const Nominees = props => {
-  const {
-    scrollRef,
-    fieldCardSelected,
-    squad,
-    formationDetail,
-    ...other
-  } = props;
+const Nominees = ({ scrollRef, ...other }) => {
   const [availableNominees, setAvailableNominees] = useState(players);
+  const { squad, formationDetail, selectedFieldCard } = useContext(
+    SquadContext
+  );
 
   // load possible nominees
   useEffect(() => {
     let category =
-      fieldCardSelected !== null
-        ? getFieldCardCategory(formationDetail, Number(fieldCardSelected))
+      selectedFieldCard !== null
+        ? getFieldCardCategory(formationDetail, Number(selectedFieldCard))
         : null;
     setAvailableNominees(filterNominees(squad, category));
-  }, [squad, fieldCardSelected, formationDetail]);
+  }, [squad, selectedFieldCard, formationDetail]);
 
   const nomineesCards = availableNominees.map(nominee => (
     <CSSTransition key={nominee.id} timeout={500} classNames='Nominee'>
-      <NomineeCard
-        key={nominee.id}
-        nomineeData={nominee}
-        fieldCardSelected={fieldCardSelected}
-        squad={squad}
-        formationDetail={formationDetail}
-        {...other}
-      />
+      <NomineeCard key={nominee.id} playerData={nominee} {...other} />
     </CSSTransition>
   ));
 

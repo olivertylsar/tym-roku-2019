@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CardButton from './CardButton';
+import SquadContext from '../context/SquadContext';
 
-const NomineeCard = props => {
-  const {
-    squad,
-    onNomineePick,
-    formationDetail,
-    nomineeData,
-    fieldCardSelected
-  } = props;
+const NomineeCard = ({ onNomineePick, playerData }) => {
+  const { squad, formationDetail, selectedFieldCard } = useContext(
+    SquadContext
+  );
 
-  const possibleSquadIndexes = formationDetail[nomineeData.category];
+  const possibleSquadIndexes = formationDetail[playerData.category];
   const showButton =
-    fieldCardSelected !== null ||
+    selectedFieldCard !== null ||
     possibleSquadIndexes
       .map(index => squad[index])
       .some(player => player === null);
@@ -21,16 +18,16 @@ const NomineeCard = props => {
     <figcaption className='NomineeCard'>
       <div className='NomineeCard__image-window'>
         <img
-          src={`/images/players/${nomineeData.image}`}
-          alt={nomineeData.lastname}
+          src={`/images/players/${playerData.image}`}
+          alt={playerData.lastname}
           className='NomineeCard__image'
         />
       </div>
-      <p className='NomineeCard__name'>{nomineeData.lastname}</p>
-      <p className='NomineeCard__club'>{nomineeData.club}</p>
-      <p className='NomineeCard__number'>{nomineeData.number}</p>
+      <p className='NomineeCard__name'>{playerData.lastname}</p>
+      <p className='NomineeCard__club'>{playerData.club}</p>
+      <p className='NomineeCard__number'>{playerData.number}</p>
       {showButton && (
-        <CardButton onClick={() => onNomineePick(nomineeData)} icon='add' />
+        <CardButton onClick={() => onNomineePick(playerData)} icon='add' />
       )}
     </figcaption>
   );

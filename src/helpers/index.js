@@ -11,10 +11,9 @@ export const filterNominees = (squad, category = null) => {
 
 export const initiateSquad = () => Array(11).fill(null);
 
-export const getFieldCardCategory = (formationDetail, fieldCardSelected) => {
-  console.log(fieldCardSelected);
+export const getFieldCardCategory = (formationDetail, fieldCardIndex) => {
   const category = Object.keys(formationDetail).find(cat =>
-    formationDetail[cat].includes(fieldCardSelected)
+    formationDetail[cat].includes(fieldCardIndex)
   );
   return category;
 };

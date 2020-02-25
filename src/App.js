@@ -4,8 +4,9 @@ import Header from './components/Header';
 import Field from './components/Field';
 import Nominees from './components/Nominees';
 import Modal from './components/Modal';
-import { initiateSquad, getFormationDetail } from './helpers';
 import Layout from './components/Layout';
+import { initiateSquad, getFormationDetail } from './helpers';
+import { SquadProvider } from './context/SquadContext';
 
 const App = () => {
   const localData = {
@@ -14,13 +15,12 @@ const App = () => {
   };
 
   const [squad, setSquad] = useState(localData.squad);
-  const [fieldCardSelected, setFieldCardSelected] = useState(null);
+  const [selectedFieldCard, setSelectedFieldCard] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedFormation, setSelectedFormation] = useState(
     localData.selectedFormation
   );
 
-  const isFieldCardSelected = fieldCardSelected !== null;
   const formationDetail = getFormationDetail(selectedFormation);
 
   // persist squad and formation into localStorage to prevent data loss after refresh
@@ -39,18 +39,18 @@ const App = () => {
 
   // scroll to nominees after field card is selected
   useEffect(() => {
-    if (isFieldCardSelected) {
+    if (selectedFieldCard !== null) {
       setTimeout(scrollToNominees, 300);
     }
     return clearTimeout();
   });
 
   const handleFieldCardPick = fieldCardIndex => {
-    setFieldCardSelected(fieldCardIndex);
+    setSelectedFieldCard(fieldCardIndex);
   };
 
   const handleNomineePick = pickedNominee => {
-    let fieldCardPosition = fieldCardSelected;
+    let fieldCardPosition = selectedFieldCard;
     // do this in case a nominee is added without FieldCard being selected
     if (fieldCardPosition === null) {
       const fieldLineIndexesInCategory =
@@ -65,14 +65,14 @@ const App = () => {
     squadAfterPick[fieldCardPosition] = pickedNominee.id;
 
     setSquad(squadAfterPick);
-    setFieldCardSelected(null);
+    setSelectedFieldCard(null);
   };
 
   const handleCancel = () => {
-    setFieldCardSelected(null);
+    setSelectedFieldCard(null);
   };
 
-  const handleSelectFormation = e => {
+  const handleFormationSelect = e => {
     setSelectedFormation(e.currentTarget.value);
   };
 
@@ -84,8 +84,7 @@ const App = () => {
 
   const handleClearSquad = () => {
     if (window.confirm('Opravdu si přejete mužstvo smazat?')) {
-      const clearedSquad = initiateSquad();
-      setSquad(clearedSquad);
+      setSquad(initiateSquad());
     }
   };
 
@@ -94,43 +93,31 @@ const App = () => {
   };
 
   const handleSubmitDone = () => {
-    handleClearSquad();
+    setSquad(initiateSquad());
     setShowModal(false);
   };
-
-  // check if squad is complete to enable submit button
-  const enableSubmitButton = !squad.includes(null) && !isFieldCardSelected;
-  // check if squad is not empty to enable clear squad button
-  const enableClearSquadButton =
-    !squad.every(val => val === null) && !isFieldCardSelected;
 
   return (
     <>
       <Layout>
-        <Header
-          onClearSquad={handleClearSquad}
-          onSubmitSquad={handleSubmitSquad}
-          enableClearSquadButton={enableClearSquadButton}
-          enableSubmitButton={enableSubmitButton}
-          handleSelectFormation={handleSelectFormation}
-          selectedFormation={selectedFormation}
-        />
-        <Field
-          squad={squad}
-          onFieldCardPick={handleFieldCardPick}
-          onCancelPick={handleCancel}
-          formationDetail={formationDetail}
-          fieldCardSelected={fieldCardSelected}
-          resetSquadIndex={resetSquadIndex}
-        />
-        <Nominees
-          scrollRef={sectionNominees}
-          squad={squad}
-          onNomineePick={handleNomineePick}
-          onCancelPick={handleCancel}
-          formationDetail={formationDetail}
-          fieldCardSelected={fieldCardSelected}
-        />
+        <SquadProvider value={{ squad, formationDetail, selectedFieldCard }}>
+          <Header
+            onClearSquad={handleClearSquad}
+            onSubmitSquad={handleSubmitSquad}
+            onFormationSelect={handleFormationSelect}
+            selectedFormation={selectedFormation}
+          />
+          <Field
+            onFieldCardPick={handleFieldCardPick}
+            onCancelPick={handleCancel}
+            resetSquadIndex={resetSquadIndex}
+          />
+          <Nominees
+            scrollRef={sectionNominees}
+            onNomineePick={handleNomineePick}
+            onCancelPick={handleCancel}
+          />
+        </SquadProvider>
       </Layout>
       {showModal && <Modal onSubmitDone={handleSubmitDone} />}
     </>

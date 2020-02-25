@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FieldCard from './FieldCard';
 import players from '../players.json';
+import SquadContext from '../context/SquadContext';
 
 const renderFieldCards = fieldCardProps => {
   const {
     fieldLineIndexes,
     category,
-    squad,
     resetSquadIndex,
+    squad,
     ...other
   } = fieldCardProps;
 
@@ -20,10 +21,10 @@ const renderFieldCards = fieldCardProps => {
           playerId === player.id
             ? category === player.category
               ? true
-              : function() {
+              : (function() {
                   resetSquadIndex(fieldCardIndex);
                   return false;
-                }()
+                })()
             : false
         )
       : null;
@@ -32,7 +33,7 @@ const renderFieldCards = fieldCardProps => {
       <FieldCard
         key={fieldCardIndex}
         fieldCardIndex={fieldCardIndex}
-        player={playerData ? playerData : null}
+        playerData={playerData ? playerData : null}
         category={category}
         {...other}
       />
@@ -42,9 +43,9 @@ const renderFieldCards = fieldCardProps => {
   return fieldCards;
 };
 
-const FieldLine = props => {
-  const { label, ...other } = props;
-  const fieldCards = renderFieldCards(other);
+const FieldLine = ({ label, ...other }) => {
+  const { squad } = useContext(SquadContext);
+  const fieldCards = renderFieldCards({ ...other, squad });
 
   return (
     <div className='FieldLine'>

@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { getFormationLabels } from '../helpers';
+import SquadContext from '../context/SquadContext';
 
 const Header = props => {
   const {
     onClearSquad,
     onSubmitSquad,
-    enableClearSquadButton,
-    enableSubmitButton,
-    handleSelectFormation,
+    onFormationSelect,
     selectedFormation
   } = props;
+
+  const { squad, selectedFieldCard } = useContext(SquadContext);
+  const isFieldCardSelected = selectedFieldCard !== null;
+
+  // check if squad is complete to enable submit button
+  const enableSubmitButton = !squad.includes(null) && !isFieldCardSelected;
+  // check if squad is not empty to enable clear squad button
+  const enableClearSquadButton =
+    !squad.every(val => val === null) && !isFieldCardSelected;
 
   const formationOptions = getFormationLabels().map(formation => (
     <option key={formation}>{formation}</option>
@@ -21,7 +29,11 @@ const Header = props => {
         Vyber si svůj <span>tým roku!</span>
       </h1>
       <div className='Header__actions'>
-        <select className='Header__select' onChange={handleSelectFormation} value={selectedFormation}>
+        <select
+          className='Header__select'
+          onChange={onFormationSelect}
+          value={selectedFormation}
+        >
           {formationOptions}
         </select>
         <button

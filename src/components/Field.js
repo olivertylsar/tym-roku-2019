@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FieldLine from './FieldLine';
+import SquadContext from '../context/SquadContext';
 
 const Field = props => {
-  const { formationDetail, ...other } = props;
+  const { formationDetail } = useContext(SquadContext);
 
   const categories = ['attackers', 'midfielders', 'defenders', 'goalkeepers'];
   const labels = ['útočníci', 'záložníci', 'obránci', 'brankář'];
@@ -14,7 +15,7 @@ const Field = props => {
         label={labels[index]}
         fieldLineIndexes={formationDetail[category]}
         category={category}
-        {...other}
+        {...props}
       />
     );
   });
